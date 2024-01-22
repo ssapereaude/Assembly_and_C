@@ -9,6 +9,10 @@ START:                  ; first instruction of program
 
 * Put program code here
 
+    MOVE.L #%100,       $3000          ; moving the 32-bit 100 (in binary) (4 in hex) to the data register D0
+    MOVE.L #$100,       $3010          ; moving the 32-bit 100 (in hex) to the data register D1
+    MOVE.L #100,        $3020          ; moving the 32-bit 100 (in decimal) (64 in hex) to the data register D2
+
     MOVE.L #%100,       D0          ; moving the 32-bit 100 (in binary) (4 in hex) to the data register D0
     MOVE.L #$100,       D1          ; moving the 32-bit 100 (in hex) to the data register D1
     MOVE.L #100,        D2          ; moving the 32-bit 100 (in decimal) (64 in hex) to the data register D2

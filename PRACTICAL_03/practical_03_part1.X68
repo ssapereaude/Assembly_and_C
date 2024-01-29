@@ -10,16 +10,17 @@ START:                  ; first instruction of program
 * Put program code here
 
     LEA $4000, A1       ;  A1:00004000
-    MOVE.B #100, (A1)   ;  $4000: 64 FF FF FF
-                        ;  LEA- Load effective address of #100 to to A1
-                        ;  MOVE.B - to move 8 bit (1 byte) from source to destination
-                        ;  Address register denoted as An - 16/32-bit n=0-7
+    MOVE.B #100, (A1)   ;  $4000: 64
+                        ;  LEA- Load effective address of #4000 into A1
+                        ;  MOVE.B - to move the byte value 100 (64hex) to A1 ($4000) 
+                        ;  Address register denoted as An - 16/32-bit n=0-7 used for storing address (reference) instead of accessing actual data 
 
     SIMHALT             ; halt simulator
 
 * Put variables and constants here
 
     END    START        ; last line of source
+
 
 
 *~Font name~Courier New~

@@ -10,15 +10,16 @@ START:                  ; first instruction of program
 * Put program code here
 
     LEA HEALTH, A3      ; A3: 0000100E $1000 0E: 64
-                        ; load the effective address of 'health' label into address register A3
-    SUB.B #10, (A3)     ; $1000 0E: 5A
+                        ; load the effective address of health into address register A3
+    SUB.B #10, (A3)     ; $1000 0E: 5A subtract 10 from the byte at the address in A3
 
     SIMHALT             ; halt simulator
 
 * Put variables and constants here
 
-HEALTH dc.b $64         ; define constant,byte to reserve memory&initialize with the specified value to the label health
+HEALTH dc.b $64         ; define a byte to reserve memory&initialize $64 for health label (full health)
     END    START        ; last line of source
+
 
 *~Font name~Courier New~
 *~Font size~10~

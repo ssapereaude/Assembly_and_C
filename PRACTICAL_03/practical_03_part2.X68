@@ -13,12 +13,13 @@ START:                  ; first instruction of program
     MOVE.B #100, (A2)   ; $4000: 64 FF FF FF
     SUB.B #10, (A2)     ; $4000: 5A FF FF FF
                         ; SUB - Substract binary (SUBI or SUBQ used when source is #n, Prevent SUBQ with #n.L)
-
+                        ; value 100 (hex 64) stored at $4000 memory address done by MOVE.B #100 (A2), then we substract 10 which results in 90 (5A hex) at the memory address of $4000
     SIMHALT             ; halt simulator
 
 * Put variables and constants here
 
     END    START        ; last line of source
+
 
 
 *~Font name~Courier New~

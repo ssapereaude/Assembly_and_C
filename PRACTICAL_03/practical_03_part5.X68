@@ -24,8 +24,8 @@ START:                  ; first instruction of program
     MOVE.L (A1)+, D2                ; A1:00001034 D2:0000001E
     ADD.L D2, D0                    ; D0:00000050
     
-    MOVE.L (A1)+,D2                 ; A1:00001038 D2:FFFFFFFF (2s complement which leads to -1) garbage (whatever is stored after array in memory in this case FFFFFFFF)
-    ADD.L D2,D0                     ; D0:0000004F garbage
+    MOVE.L (A1)+,D2                 ; A1:00001038 D2:FFFFFFFF (2s complement which leads to -1 and then applied to D0:00000050) garbage (whatever is stored after array in memory in this case FFFFFFFF)
+    ADD.L D2,D0                     ; D0:0000004F 
     
     
     ACHIEVEMENT_POINTS: DC.L 5,10,15,20,30

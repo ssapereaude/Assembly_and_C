@@ -1,66 +1,109 @@
 *-----------------------------------------------------------
-* Title      :  practical_06_part2.X68  
-* Written by :  Temur Rustamov  
+* Title      :  practical_06_part2.X68
+* Written by :  Temur Rustamov
 * Date       :  26/02/2024
 * Description:  Conditional Branches and Control Structures
 *-----------------------------------------------------------
     ORG    $1000
+
 START:                  ; first instruction of program
+    MOVE    #0,D0   D0 = task number 0
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE    #1,D0   D0 = task number 1
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE    #2,D0   D0 = task number 2
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE.L  #15,D1   ; Move the number you want to display into D1
+    MOVE.W  #3,D0    ; Set the task number to 3
+    TRAP    #15      ; Activate the task
+    
+    MOVE.W  #4,D0    ; Set the task number to 4 for number input
+    TRAP    #15      ; Activate the task
+    
+    MOVE     #5,D0   ; Set the task number to 5 for character input
+    TRAP     #15     ; Activate the task
+    
+    MOVE.B  #61,D1   ; Move the number you want to display into D1
+    MOVE.W  #6,D0    ; Set the task number to 6
+    TRAP    #15      ; Activate the task
+    
+    
+    MOVE.W  #7,D0    ; Set the task number to 7
+    TRAP    #15      ; Activate the task
+    
+    MOVE    #8,D0   D0 = task number 8
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE    #9,D0   D0 = task number 9
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE    #10,D0   D0 = task number 10
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE    #11,D0   D0 = task number 11
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE.L  #12,D1   ; Move the number you want to display into D1
+    MOVE.W  #3,D0    ; Set the task number to 12
+    TRAP    #15      ; Activate the task
+    
+    MOVE.W  #13,D0    ; Set the task number to 13 for number input
+    TRAP    #15      ; Activate the task
+    
+    MOVE     #14,D0   ; Set the task number to 14 for character input
+    TRAP     #15     ; Activate the task
+    
+    MOVE.B  #15,D1   ; Move the number you want to display into D1
+    MOVE.W  #6,D0    ; Set the task number to 15
+    TRAP    #15      ; Activate the task
+    
+    
+    MOVE.W  #16,D0    ; Set the task number to 16
+    TRAP    #15      ; Activate the task
+    
+    MOVE    #17,D0   D0 = task number 17
+    LEA     TEXT,A1 A1 = address of string to display.
+    TRAP    #15     Activate input/output task.
+    
+    MOVE.L  #18,D1   ; Move the number you want to display into D1
+    MOVE.W  #3,D0    ; Set the task number to 18
+    TRAP    #15      ; Activate the task
+    
+    MOVE.W  #19,D0    ; Set the task number to 19 for number input
+    TRAP    #15      ; Activate the task
+    
+    MOVE     #20,D0   ; Set the task number to 20 for character input
+    TRAP     #15     ; Activate the task
+    
+    MOVE.B  #21,D1   ; Move the number you want to display into D1
+    MOVE.W  #6,D0    ; Set the task number to 21
+    TRAP    #15      ; Activate the task
+    
+    
+    MOVE.W  #22,D0    ; Set the task number to 22
+    TRAP    #15      ; Activate the task
+
+    
+    
+    
 
 * Put program code here
-    MOVE    #0,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) with CR, LF. (see task 13)  
-    LEA     TEXT,A1     ; A1 = address of string to display.
-                        ; A1=0000100E
-                        
-    MOVE    #1,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) without CR, LF. (see task 14)  
-    LEA     TEXT1,A1     ; A1 = address of string to display.
-                        ; A1=00001018
-                        
-    MOVE    #2,D0       ; Read string from keyboard and store at (A1), NULL (0) terminated, length returned in D1.W (max 80)   
-    LEA     TEXT2,A1     ; A1 = address of string to display.
-                        ; A1=00001034
-                        
-    MOVE    #0,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) with CR, LF. (see task 13)  
-    LEA     TEXT,A1     ; A1 = address of string to display.
-                        ; A1=0000100E
-                        
-    MOVE    #1,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) without CR, LF. (see task 14)  
-    LEA     TEXT1,A1     ; A1 = address of string to display.
-                        ; A1=00001018
-                        
-    MOVE    #2,D0       ; Read string from keyboard and store at (A1), NULL (0) terminated, length returned in D1.W (max 80)   
-    LEA     TEXT2,A1     ; A1 = address of string to display.
-                        ; A1=00001034
-                        
-    MOVE    #0,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) with CR, LF. (see task 13)  
-    LEA     TEXT,A1     ; A1 = address of string to display.
-                        ; A1=0000100E
-                        
-    MOVE    #1,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) without CR, LF. (see task 14)  
-    LEA     TEXT1,A1     ; A1 = address of string to display.
-                        ; A1=00001018
-                        
-    MOVE    #2,D0       ; Read string from keyboard and store at (A1), NULL (0) terminated, length returned in D1.W (max 80)   
-    LEA     TEXT2,A1     ; A1 = address of string to display.
-                        ; A1=00001034
-                        
-    MOVE    #0,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) with CR, LF. (see task 13)  
-    LEA     TEXT,A1     ; A1 = address of string to display.
-                        ; A1=0000100E
-                        
-    MOVE    #1,D0       ; Display n characters of string at (A1), n is D1.W (stops on NULL or max 255) without CR, LF. (see task 14)  
-    LEA     TEXT1,A1     ; A1 = address of string to display.
-                        ; A1=00001018
-                        
-    MOVE    #2,D0       ; Read string from keyboard and store at (A1), NULL (0) terminated, length returned in D1.W (max 80)   
-    LEA     TEXT2,A1     ; A1 = address of string to display.
-                        ; A1=00001034
 
     SIMHALT             ; halt simulator
-TEXT    dc.b    'Hello World',0   Null terminated string.
-TEXT1    dc.b    'Hello',0   Null terminated string.
-TEXT2    dc.b    'Hel',0   Null terminated string.
+
 * Put variables and constants here
+TEXT    DC.B    'Hello World',0   Null terminated string.
+
 
     END    START        ; last line of source
 

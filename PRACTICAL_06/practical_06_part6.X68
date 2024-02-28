@@ -1,7 +1,7 @@
 *-----------------------------------------------------------
 * Title      :  practical_06_part6.X68  
 * Written by :  Temur Rustamov
-* Date       :  28/02/2024
+* Date       :  26/02/2024
 * Description:   Conditional Branches and Control Structur
 *-----------------------------------------------------------
     ORG    $1000
@@ -45,6 +45,7 @@ END_GAME
 
     END    START        ; last line of source
                         ; we can directly manipulate of the stack pointer (SP) to move around stack: changing the value of A7 f.e by using MOVE & LEA & ADDQ/SUBQ
+
 
 *~Font name~Courier New~
 *~Font size~10~

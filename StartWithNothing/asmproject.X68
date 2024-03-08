@@ -76,7 +76,30 @@ GAME_LOOP:
     BSR     GAME_LEVEL_10
     BSR     GAME_LEVEL_10_OUTPUT
     BSR     GAME_LEVEL_11
-    
+    BSR     GAME_LEVEL_12
+    BSR     GAME_LEVEL_12_OUTPUT
+    BSR     GAME_LEVEL_13
+    BSR     GAME_LEVEL_13_OUTPUT
+    BSR     GAME_LEVEL_14
+    BSR     GAME_LEVEL_15
+    BSR     GAME_LEVEL_15_OUTPUT
+    BSR     GAME_LEVEL_16
+    BSR     GAME_LEVEL_16_OUTPUT
+    BSR     GAME_LEVEL_17
+    BSR     GAME_LEVEL_18
+    BSR     GAME_LEVEL_18_OUTPUT
+    BSR     GAME_LEVEL_19
+    BSR     GAME_LEVEL_19_OUTPUT
+    BSR     GAME_LEVEL_20
+    BSR     GAME_LEVEL_21
+    BSR     GAME_LEVEL_21_OUTPUT
+    BSR     GAME_LEVEL_22
+    BSR     GAME_LEVEL_22_OUTPUT
+    BSR     GAME_LEVEL_23
+    BSR     GAME_LEVEL_23_OUTPUT
+    BSR     GAME_LEVEL_24
+    BSR     GAME_LEVEL_25
+    BSR     CLEAR_SCREEN
     BRA     GAME_LOOP
     
 
@@ -311,11 +334,11 @@ CHOICE_1:
 
     
     CMP.B    #1,D1
-    BNE     .NO_CHOICE_1
+    BNE     NO_CHOICE_1
     RTS
 
 
-.NO_CHOICE_1:    
+NO_CHOICE_1:    
     BSR     CLEAR_SCREEN
     
     LEA     NO_CHOICE_1_MSG,A1
@@ -787,11 +810,574 @@ GAME_LEVEL_11:
 
     BRA GAME_LEVEL_11
     
-GAME_LEVEL_11_OUTPUT:
-    LEA     GAME_LEVEL_11_OUTPUT_MSG,A1
+;GAME_LEVEL_11_OUTPUT:
+ ;   LEA     GAME_LEVEL_11_OUTPUT_MSG,A1
+  ;  MOVE    #14,D0
+   ; TRAP    #15
+    ;RTS
+    
+GAME_LEVEL_12:
+    LEA     GAME_LEVEL_12_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_12_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_12_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_12
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_12:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_12_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_12
+    
+GAME_LEVEL_12_OUTPUT:
+    LEA     GAME_LEVEL_12_OUTPUT_MSG,A1
     MOVE    #14,D0
     TRAP    #15
     RTS
+    
+GAME_LEVEL_13:
+    LEA     GAME_LEVEL_13_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_13_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_13_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_13
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_13:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_13_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_13
+    
+GAME_LEVEL_13_OUTPUT:
+    ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_13_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_14:
+    LEA     GAME_LEVEL_14_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_14_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_14_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_14
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_14:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_14_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_14
+    
+
+    
+GAME_LEVEL_15:
+    LEA     GAME_LEVEL_15_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_15_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_15_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_15
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_15:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_15_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_15
+    
+GAME_LEVEL_15_OUTPUT:
+    ;ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_15_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_16:
+    LEA     GAME_LEVEL_16_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_16_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_16_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_16
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_16:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_16_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_16
+    
+GAME_LEVEL_16_OUTPUT:
+    ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_16_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_17:
+    LEA     GAME_LEVEL_17_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_17_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_17_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_17
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_17:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_17_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_17
+    
+
+    
+GAME_LEVEL_18:
+    LEA     GAME_LEVEL_18_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_18_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_18_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_18
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_18:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_18_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_18
+    
+GAME_LEVEL_18_OUTPUT:
+    ;ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_18_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_19:
+    LEA     GAME_LEVEL_19_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_19_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_19_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_19
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_19:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_19_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_19
+    
+GAME_LEVEL_19_OUTPUT:
+    ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_19_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_20:
+    LEA     GAME_LEVEL_20_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_20_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_20_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_20
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_20:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_20_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_20
+    
+
+    
+GAME_LEVEL_21:
+    LEA     GAME_LEVEL_21_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_21_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_21_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_21
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_21:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_21_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_21
+    
+GAME_LEVEL_21_OUTPUT:
+    ;ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_21_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_22:
+    LEA     GAME_LEVEL_22_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_22_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_22_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_22
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_22:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_22_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_22
+    
+GAME_LEVEL_22_OUTPUT:
+    ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_22_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_23:
+    LEA     GAME_LEVEL_23_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_23_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_23_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_23
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_23:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_23_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_23
+    
+GAME_LEVEL_23_OUTPUT:
+    ;ADD.W   #15, BALANCE
+    LEA     GAME_LEVEL_23_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    RTS
+    
+GAME_LEVEL_24:
+
+    LEA     GAME_LEVEL_24_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+
+       
+    LEA     GAME_LEVEL_24_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_24
+    
+    LEA     GAME_LEVEL_24_OUTPUT_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    MOVE.W  #0,ATTEMPTS
+    RTS
+    
+.NO_GAME_LEVEL_24:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_24_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_24
+    
+
+    
+GAME_LEVEL_25:
+    LEA     GAME_LEVEL_25_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    LEA     GAME_LEVEL_25_INPUT_MSG,A1
+    
+    MOVE    #2,D0
+    TRAP    #15
+    
+    
+    LEA     GAME_LEVEL_25_KEY,A6
+    
+    MOVE.B  (A1),D0
+    CMP.B   (A6),D0
+    
+    BNE     .NO_GAME_LEVEL_25
+    MOVE.W  #0,ATTEMPTS
+    BRA     NO_CHOICE_1
+    
+.NO_GAME_LEVEL_25:
+    BSR COMPARISON_PART
+    
+    LEA     NO_GAME_LEVEL_25_MSG,A1
+    MOVE    #14,D0
+    TRAP    #15
+    
+    MOVE.W  ATTEMPTS,D1
+    MOVE.B  #3,D0
+    TRAP    #15
+    
+    BSR NEXT_LINE
+
+    BRA GAME_LEVEL_25
+    
     
 
     
@@ -807,7 +1393,10 @@ GAME_OVER:
     LEA     GAME_OVER_MSG,A1
     MOVE    #14,D0
     TRAP    #15
-    BSR END       
+    BSR END 
+
+GAME_WIN:
+          
 
 END:
     SIMHALT  
@@ -932,7 +1521,7 @@ CHOICE_1_MSG:
     
 NO_CHOICE_1_MSG:
     DC.B    $0D,$0A
-    DC.B    'Amount: 10BTC'
+    DC.B    'Amount($): 80'
     DC.B    $0D,$0A
     DC.B    'IBAN: IE65BOFI900017257357'
     DC.B    $0D,$0A
@@ -1022,7 +1611,7 @@ GAME_LEVEL_4_MSG:
     
 GAME_LEVEL_4_OUTPUT_MSG:
     DC.B    $0D,$0A
-    DC.B 'burpsulte_free_linux_v1_7_15.txt       rocket-history.txt      iamthekey.txt',$0D,$0A
+    DC.B 'burpsulte_free_linux_v1_7_15.sh        rocket-history.txt      iamthekey.txt',$0D,$0A
     DC.B 'dontdeleteme.txt                       examples.txt            READTHIS.txt',$0D,$0A
     ;DC.B '',$0D,$0A
     ;DC.B '+-- /usr',$0D,$0A
@@ -1072,7 +1661,7 @@ GAME_LEVEL_8_MSG:
     
 GAME_LEVEL_8_OUTPUT_MSG:
     DC.B    $0D,$0A
-    DC.B 'burpsulte_free_linux_v1_7_15.txt      rocket-history.txt                  ',$0D,$0A
+    DC.B 'burpsulte_free_linux_v1_7_15.sh       rocket-history.txt                  ',$0D,$0A
     DC.B 'dontdeleteme.txt                      examples.txt            READTHIS.txt',$0D,$0A
     ;DC.B '',$0D,$0A
     ;DC.B '+-- /usr',$0D,$0A
@@ -1097,7 +1686,7 @@ GAME_LEVEL_9_OUTPUT_MSG:
     DC.B '1. CLEAR the screen',$0D,$0A
     DC.B '2. DELETE this file ',$0D,$0A
     DC.B '3. OPEN examples.txt ',$0D,$0A
-    DC.B '3. GET another 15$',$0D,$0A
+    DC.B '4. GET another 15$',$0D,$0A
     DC.B            $0D,$0A,0
     
 GAME_LEVEL_9_KEY:
@@ -1121,13 +1710,225 @@ GAME_LEVEL_11_MSG:
     DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
     DC.B    $ff ; garbage
     
-GAME_LEVEL_11_OUTPUT_MSG:
+    
+GAME_LEVEL_11_KEY:
+    DC.B    'rm rocket-history.txt',0
+    
+GAME_LEVEL_12_MSG:
     DC.B    $0D,$0A
     DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
     DC.B    $ff ; garbage
     
-GAME_LEVEL_11_KEY:
-    DC.B    'rm rocket-history.txt',0
+GAME_LEVEL_12_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B 'burpsulte_free_linux_v1_7_15.sh                                            ',$0D,$0A
+    DC.B 'dontdeleteme.txt                      examples.txt            READTHIS.txt',$0D,$0A
+    ;DC.B '',$0D,$0A
+    ;DC.B '+-- /usr',$0D,$0A
+    ;DC.B '    +-- /usr/bin',$0D,$0A
+   ; DC.B '    +-- /usr/include',$0D,$0A
+    ;DC.B '    +-- /usr/lib',$0D,$0A
+    ;DC.B '    +-- /usr/local',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_12_KEY:
+    DC.B    'ls',0
+    
+GAME_LEVEL_13_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_13_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B 'YOUR BALANCE HAS BEEN UPDATED AGAIN!',$0D,$0A
+    DC.B 'EXECUTING SHELL SCRIPTS???',$0D,$0A
+    DC.B '1. DELETE this file  ',$0D,$0A
+    DC.B '2. EXECUTE burpsulte_free_linux_v1_7_15.sh ',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_13_KEY:
+    DC.B    'cat examples.txt',0
+    
+GAME_LEVEL_14_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+
+    
+GAME_LEVEL_14_KEY:
+    DC.B    'rm examples.txt',0
+    
+GAME_LEVEL_15_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_15_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B 'burpsulte_free_linux_v1_7_15.sh                                            ',$0D,$0A
+    DC.B 'dontdeleteme.txt                                               READTHIS.txt',$0D,$0A
+    ;DC.B '',$0D,$0A
+    ;DC.B '+-- /usr',$0D,$0A
+    ;DC.B '    +-- /usr/bin',$0D,$0A
+   ; DC.B '    +-- /usr/include',$0D,$0A
+    ;DC.B '    +-- /usr/lib',$0D,$0A
+    ;DC.B '    +-- /usr/local',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_15_KEY:
+    DC.B    'ls',0
+    
+GAME_LEVEL_16_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_16_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B 'GUES WHAT???',$0D,$0A
+    DC.B 'YOUR BALANCE HAS BEEN UPDATED AGAIN!',$0D,$0A
+    DC.B 'DELETE THOSE FILES YOU DO NOT NEED THEM',$0D,$0A
+    DC.B '1. DELETE this file',$0D,$0A
+    DC.B '2. OPEN READTHIS.txt  ',$0D,$0A
+    DC.B 'AND AS YOU MAY HAVE ALREADY UNDERSTOOD...  ',$0D,$0A
+    DC.B '...ANOTHER 15$ ARE WAITING FOR YOU  ',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_16_KEY:
+    DC.B    './burpsulte_free_linux_v1_7_15.sh',0
+    
+GAME_LEVEL_17_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+
+    
+GAME_LEVEL_17_KEY:
+    DC.B    'rm burpsulte_free_linux_v1_7_15.sh',0
+    
+GAME_LEVEL_18_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_18_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B '                                                                           ',$0D,$0A
+    DC.B 'dontdeleteme.txt                                               READTHIS.txt',$0D,$0A
+    ;DC.B '',$0D,$0A
+    ;DC.B '+-- /usr',$0D,$0A
+    ;DC.B '    +-- /usr/bin',$0D,$0A
+   ; DC.B '    +-- /usr/include',$0D,$0A
+    ;DC.B '    +-- /usr/lib',$0D,$0A
+    ;DC.B '    +-- /usr/local',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_18_KEY:
+    DC.B    'ls',0
+    
+GAME_LEVEL_19_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_19_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B '15$ HAS BEEN ADDED TO YOU BALANCE ACCOUNT!',$0D,$0A
+    DC.B 'YOU WILL UNDERSTAND WHY YOU NEED THEM VERY SOON!',$0D,$0A
+    DC.B 'PRIVATE KEY:12345ABABA',$0D,$0A
+    DC.B '1. DELETE READTHIS.txt  ',$0D,$0A
+    DC.B '2. OPEN dontdeleteme.txt  ',$0D,$0A
+    DC.B 'YESSS YOU WILL GET ANOTHER 15$ YOU GOT THAT ',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_19_KEY:
+    DC.B    'cat READTHIS.txt',0
+    
+GAME_LEVEL_20_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+
+    
+GAME_LEVEL_20_KEY:
+    DC.B    'rm READTHIS.txt',0
+    
+GAME_LEVEL_21_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_21_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B '                                                                           ',$0D,$0A
+    DC.B 'dontdeleteme.txt                                                           ',$0D,$0A
+    ;DC.B '',$0D,$0A
+    ;DC.B '+-- /usr',$0D,$0A
+    ;DC.B '    +-- /usr/bin',$0D,$0A
+   ; DC.B '    +-- /usr/include',$0D,$0A
+    ;DC.B '    +-- /usr/lib',$0D,$0A
+    ;DC.B '    +-- /usr/local',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_21_KEY:
+    DC.B    'ls',0
+    
+GAME_LEVEL_22_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_22_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B 'ANOTHER 15$ WELL DONE',$0D,$0A
+    DC.B '1. RETRIEVE the content of the web page: ',$0D,$0A
+    DC.B 'http://asmproject.com  ',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_22_KEY:
+    DC.B    'cat dontdeleteme.txt',0
+    
+GAME_LEVEL_23_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+GAME_LEVEL_23_OUTPUT_MSG:
+    DC.B    $0D,$0A
+    DC.B '<!DOCTYPE html>',$0D,$0A
+    DC.B '<html>',$0D,$0A
+    DC.B '<head>',$0D,$0A
+    DC.B '<title>ASM PROJECT</title>',$0D,$0A
+    DC.B '</head>',$0D,$0A
+    DC.B '<body>',$0D,$0A
+    DC.B '<h1>',$0D,$0A
+    DC.B 'PRIVATE_KEY: ',0
+
+GAME_LEVEL_23_KEY:
+    DC.B    'curl http://asmproject.com',0    
+    
+GAME_LEVEL_24_OUTPUT_MSG:
+    DC.B    $0D,$0A   
+    DC.B '</h1>',$0D,$0A
+    DC.B '<p>lynx http://somewebpage.com</p>',$0D,$0A
+    DC.B '</body>',$0D,$0A
+    DC.B '</html>',$0D,$0A
+    DC.B            $0D,$0A,0
+    
+GAME_LEVEL_24_KEY:
+    DC.B    '12345ABABA',0 
+    
+GAME_LEVEL_25_MSG:
+    DC.B    $0D,$0A
+    DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+    DC.B    $ff ; garbage
+    
+    
+GAME_LEVEL_25_KEY:
+    DC.B    'lynx http://somewebpage.com',0
+    
+    
 
     
 
@@ -1170,7 +1971,7 @@ NO_GAME_LEVEL_1_MSG:
     
 NO_GAME_LEVEL_2_MSG:
     DC.B    $0D,$0A   
-    DC.B    'HINT: list files or directories',$0D,$0A 
+    DC.B    'HINT: LIST files or directories',$0D,$0A 
     DC.B    $0D,$0A 
     DC.B    'ATTEMPTS: ',0
     DC.B    $0D,$0A,0
@@ -1221,7 +2022,7 @@ NO_GAME_LEVEL_7_MSG:
     
 NO_GAME_LEVEL_8_MSG:
     DC.B    $0D,$0A   
-    DC.B    'HINT: LIST files',$0D,$0A 
+    DC.B    'HINT: LIST the directory contents',$0D,$0A 
     DC.B    $0D,$0A 
     DC.B    'ATTEMPTS: ',0
     DC.B    $0D,$0A,0
@@ -1243,6 +2044,108 @@ NO_GAME_LEVEL_10_MSG:
 NO_GAME_LEVEL_11_MSG:
     DC.B    $0D,$0A   
     DC.B    'HINT: DELETE the previous file that you have opened',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_12_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: LIST the contents please',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_13_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: OPEN examples.txt',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_14_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: DELETE the previous file',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_15_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: LIST files yes obviously...',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_16_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: ./burpsulte_free_linux_v1_7_15.sh',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+    
+NO_GAME_LEVEL_17_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: DELETE burpsulte_free_linux_v1_7_15.sh',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+    
+NO_GAME_LEVEL_18_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: exactly, LIST the contents',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_19_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: cat READTHIS.txt',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_20_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: DELETE READTHIS.txt',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_21_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: LIST directory contents ',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+    
+NO_GAME_LEVEL_22_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: OPEN dontdeleteme.txt',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+    
+NO_GAME_LEVEL_23_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: curl http://asmproject.com',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_24_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: PRIVATE KEY:12345ABABA',$0D,$0A 
+    DC.B    $0D,$0A 
+    DC.B    'ATTEMPTS: ',0
+    DC.B    $0D,$0A,0
+    
+NO_GAME_LEVEL_25_MSG:
+    DC.B    $0D,$0A   
+    DC.B    'HINT: lynx http://somewebpage.com',$0D,$0A 
     DC.B    $0D,$0A 
     DC.B    'ATTEMPTS: ',0
     DC.B    $0D,$0A,0
@@ -1274,6 +2177,34 @@ GAME_LEVEL_10_INPUT_MSG DC.W ' ',0
 
 GAME_LEVEL_11_INPUT_MSG DC.W ' ',0
 
+GAME_LEVEL_12_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_13_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_14_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_15_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_16_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_17_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_18_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_19_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_20_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_21_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_22_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_23_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_24_INPUT_MSG DC.W ' ',0
+
+GAME_LEVEL_25_INPUT_MSG DC.W ' ',0
+
 USER_INPUT_MSG DC.W ' ',0
 
 
@@ -1285,6 +2216,8 @@ USER_INPUT_MSG DC.W ' ',0
 * Put variables and constants here
 
     END    START        ; last line of source
+
+
 
 
 

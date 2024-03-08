@@ -1,0 +1,2503 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 08/03/2024 16:15:19
+
+00000000                             1  
+00000000                             2  *-----------------------------------------------------------
+00000000                             3  * Title      :  Option I
+00000000                             4  * Written by :  Temur Rustamov
+00000000                             5  * Date       :  27/02/2024
+00000000                             6  * Description:  asmproject
+00000000                             7  *-----------------------------------------------------------
+00001000                             8      ORG    $1000
+00001000                             9  *-----------------------------------------------------------
+00001000                            10  * Section       : Filling Colour 
+00001000                            11  * Description   : making the fill colour blue
+00001000                            12  *-----------------------------------------------------------
+00001000                            13  START:                  ; first instruction of program
+00001000                            14  
+00001000  47F8 4000                 15      LEA     $4000,A3        
+00001004  223C 000000FF             16      MOVE.L  #$000000FF,D1   Make the fill color blue
+0000100A  103C 0015                 17      MOVE.B  #21,D0
+0000100E  4E4F                      18      TRAP    #15
+00001010                            19  *-----------------------------------------------------------
+00001010                            20  * Section       : Game Loop 
+00001010                            21  * Description   : The script, 
+00001010                            22  *-----------------------------------------------------------    
+00001010                            23  GAME_LOOP:
+00001010  6100 0156                 24      BSR     START_PART
+00001014  6100 0176                 25      BSR     CLEAR_SCREEN
+00001018  6100 017C                 26      BSR     USER_PART
+0000101C  6100 01CC                 27      BSR     PASSWORD_PART
+00001020  6100 016A                 28      BSR     CLEAR_SCREEN
+00001024  6100 023E                 29      BSR     BEGINNING_PART
+00001028  6100 0162                 30      BSR     CLEAR_SCREEN
+0000102C  6100 0276                 31      BSR     WELCOME_PART
+00001030  6100 0280                 32      BSR     WARNING_PART_1
+00001034  6100 028A                 33      BSR     PRESS_ENTER_PART
+00001038  6100 0152                 34      BSR     CLEAR_SCREEN
+0000103C  6100 0266                 35      BSR     WELCOME_PART
+00001040  6100 02C0                 36      BSR     WARNING_PART_2
+00001044  6100 027A                 37      BSR     PRESS_ENTER_PART
+00001048  6100 0142                 38      BSR     CLEAR_SCREEN
+0000104C  6100 0256                 39      BSR     WELCOME_PART
+00001050  6100 02BE                 40      BSR     WARNING_PART_3
+00001054  6100 026A                 41      BSR     PRESS_ENTER_PART
+00001058  6100 0132                 42      BSR     CLEAR_SCREEN
+0000105C  6100 0246                 43      BSR     WELCOME_PART
+00001060  6100 02BC                 44      BSR     WARNING_PART_4
+00001064  6100 025A                 45      BSR     PRESS_ENTER_PART
+00001068  6100 0122                 46      BSR     CLEAR_SCREEN
+0000106C  6100 0236                 47      BSR     WELCOME_PART
+00001070  6100 02BA                 48      BSR     WARNING_PART_5
+00001074  6100 024A                 49      BSR     PRESS_ENTER_PART
+00001078  6100 0112                 50      BSR     CLEAR_SCREEN
+0000107C  6100 0226                 51      BSR     WELCOME_PART
+00001080  6100 02B8                 52      BSR     WARNING_PART_6
+00001084  6100 023A                 53      BSR     PRESS_ENTER_PART
+00001088  6100 0102                 54      BSR     CLEAR_SCREEN
+0000108C  6100 0216                 55      BSR     WELCOME_PART
+00001090  6100 02B6                 56      BSR     WARNING_PART_7
+00001094  6100 022A                 57      BSR     PRESS_ENTER_PART
+00001098  6100 00F2                 58      BSR     CLEAR_SCREEN
+0000109C  6100 0206                 59      BSR     WELCOME_PART
+000010A0  6100 02B4                 60      BSR     WARNING_PART_8
+000010A4  6100 021A                 61      BSR     PRESS_ENTER_PART
+000010A8  6100 00E2                 62      BSR     CLEAR_SCREEN
+000010AC  6100 02B6                 63      BSR     CHOICE_1
+000010B0  6100 00DA                 64      BSR     CLEAR_SCREEN
+000010B4  6100 0318                 65      BSR     GAME_LEVEL_1
+000010B8                            66      ;BSR     NEXT_LINE
+000010B8  6100 0374                 67      BSR     GAME_LEVEL_1_OUTPUT
+000010BC  6100 037E                 68      BSR     GAME_LEVEL_2
+000010C0  6100 03CA                 69      BSR     GAME_LEVEL_2_OUTPUT
+000010C4  6100 03D4                 70      BSR     GAME_LEVEL_3
+000010C8  6100 0422                 71      BSR     GAME_LEVEL_3_OUTPUT
+000010CC  6100 042C                 72      BSR     GAME_LEVEL_4
+000010D0  6100 047A                 73      BSR     GAME_LEVEL_4_OUTPUT
+000010D4  6100 0484                 74      BSR     GAME_LEVEL_5
+000010D8  6100 04D2                 75      BSR     GAME_LEVEL_5_OUTPUT
+000010DC  6100 04DC                 76      BSR     CHOICE_2
+000010E0  6100 0512                 77      BSR     GAME_LEVEL_6
+000010E4  6100 051C                 78      BSR     GAME_LEVEL_7
+000010E8  6100 056A                 79      BSR     GAME_LEVEL_8
+000010EC  6100 05B8                 80      BSR     GAME_LEVEL_8_OUTPUT
+000010F0  6100 05C2                 81      BSR     GAME_LEVEL_9
+000010F4  6100 0610                 82      BSR     GAME_LEVEL_9_OUTPUT
+000010F8  6100 0622                 83      BSR     GAME_LEVEL_10
+000010FC  6100 0670                 84      BSR     GAME_LEVEL_10_OUTPUT
+00001100  6100 0672                 85      BSR     GAME_LEVEL_11
+00001104  6100 06C0                 86      BSR     GAME_LEVEL_12
+00001108  6100 070E                 87      BSR     GAME_LEVEL_12_OUTPUT
+0000110C  6100 0718                 88      BSR     GAME_LEVEL_13
+00001110  6100 0766                 89      BSR     GAME_LEVEL_13_OUTPUT
+00001114  6100 0778                 90      BSR     GAME_LEVEL_14
+00001118  6100 07C6                 91      BSR     GAME_LEVEL_15
+0000111C  6100 0814                 92      BSR     GAME_LEVEL_15_OUTPUT
+00001120  6100 081E                 93      BSR     GAME_LEVEL_16
+00001124  6100 086C                 94      BSR     GAME_LEVEL_16_OUTPUT
+00001128  6100 087E                 95      BSR     GAME_LEVEL_17
+0000112C  6100 08CC                 96      BSR     GAME_LEVEL_18
+00001130  6100 091A                 97      BSR     GAME_LEVEL_18_OUTPUT
+00001134  6100 0924                 98      BSR     GAME_LEVEL_19
+00001138  6100 0972                 99      BSR     GAME_LEVEL_19_OUTPUT
+0000113C  6100 0984                100      BSR     GAME_LEVEL_20
+00001140  6100 09D2                101      BSR     GAME_LEVEL_21
+00001144  6100 0A20                102      BSR     GAME_LEVEL_21_OUTPUT
+00001148  6100 0A2A                103      BSR     GAME_LEVEL_22
+0000114C  6100 0A78                104      BSR     GAME_LEVEL_22_OUTPUT
+00001150  6100 0A8A                105      BSR     GAME_LEVEL_23
+00001154  6100 0AD8                106      BSR     GAME_LEVEL_23_OUTPUT
+00001158  6100 0AE2                107      BSR     GAME_LEVEL_24
+0000115C  6100 0B2A                108      BSR     GAME_LEVEL_25
+00001160  6100 002A                109      BSR     CLEAR_SCREEN
+00001164  6000 FEAA                110      BRA     GAME_LOOP
+00001168                           111      
+00001168                           112  
+00001168                           113      
+00001168                           114  START_PART:
+00001168  43F9 00002500            115      LEA     START_MSG,A1
+0000116E  303C 000E                116      MOVE    #14,D0              
+00001172  4E4F                     117      TRAP    #15
+00001174                           118  
+00001174  303C 0004                119      MOVE    #4,D0
+00001178  4E4F                     120      TRAP    #15
+0000117A                           121      
+0000117A  B27C 0001                122      CMP     #1,D1
+0000117E  6600 0004                123      BNE     .NO_START
+00001182  4E75                     124      RTS
+00001184                           125      
+00001184                           126  .NO_START:
+00001184  6100 0006                127      BSR CLEAR_SCREEN
+00001188  6100 FE86                128      BSR GAME_LOOP
+0000118C                           129      
+0000118C                           130  CLEAR_SCREEN:
+0000118C  700B                     131      MOVE.L #11,D0
+0000118E  323C FF00                132      MOVE.W #$FF00,D1
+00001192  4E4F                     133      TRAP #15
+00001194  4E75                     134      RTS
+00001196                           135      
+00001196                           136  USER_PART:
+00001196  43F9 00002522            137      LEA     USER_MSG,A1
+0000119C  303C 000E                138      MOVE    #14,D0
+000011A0  4E4F                     139      TRAP    #15
+000011A2                           140      
+000011A2  43F9 000040CE            141      LEA     USER_INPUT_MSG,A1
+000011A8                           142      
+000011A8                           143      
+000011A8  303C 0002                144      MOVE    #2,D0
+000011AC  4E4F                     145      TRAP    #15
+000011AE                           146      
+000011AE  33D1 000040CE            147      MOVE.W (A1),USER_INPUT_MSG
+000011B4                           148      
+000011B4  4DF9 00002550            149      LEA     USER_KEY,A6
+000011BA                           150      
+000011BA  2011                     151      MOVE.L  (A1),D0
+000011BC  B096                     152      CMP.L   (A6),D0
+000011BE                           153      
+000011BE                           154      
+000011BE                           155      
+000011BE  6600 000C                156      BNE     .NO_USER
+000011C2  33FC 0000 00002558       157      MOVE.W #0,ATTEMPTS
+000011CA  4E75                     158      RTS
+000011CC                           159      
+000011CC                           160      
+000011CC                           161  
+000011CC                           162  .NO_USER:
+000011CC  6100 0082                163      BSR COMPARISON_PART
+000011D0                           164      
+000011D0  43F9 00002530            165      LEA     NO_USER_MSG,A1
+000011D6  303C 000E                166      MOVE    #14,D0
+000011DA  4E4F                     167      TRAP    #15
+000011DC                           168      
+000011DC  3239 00002558            169      MOVE.W  ATTEMPTS,D1
+000011E2  103C 0003                170      MOVE.B  #3,D0
+000011E6  4E4F                     171      TRAP #15
+000011E8                           172      
+000011E8  60AC                     173      BRA USER_PART
+000011EA                           174      
+000011EA                           175  PASSWORD_PART:
+000011EA  43F9 0000258D            176      LEA     PASSWORD_MSG,A1
+000011F0  303C 000E                177      MOVE    #14,D0
+000011F4  4E4F                     178      TRAP    #15
+000011F6                           179      
+000011F6                           180      ;LEA     PASSWORD_INPUT_MSG,A1
+000011F6                           181      
+000011F6  303C 0004                182      MOVE    #4,D0
+000011FA  4E4F                     183      TRAP    #15
+000011FC                           184      
+000011FC                           185      ;MOVE.W (A1),PASSWORD_INPUT_MSG
+000011FC                           186      
+000011FC  4DF9 00003ACA            187      LEA     PASSWORD_KEY,A6
+00001202                           188      
+00001202  2001                     189      MOVE.L   D1,D0
+00001204  B096                     190      CMP.L   (A6),D0
+00001206                           191      
+00001206  6600 000C                192      BNE .NO_PASSWORD
+0000120A  33FC 0000 00002558       193      MOVE.W #0,ATTEMPTS
+00001212  4E75                     194      RTS
+00001214                           195      
+00001214                           196  .NO_PASSWORD:
+00001214  6100 003A                197      BSR COMPARISON_PART
+00001218                           198      
+00001218  43F9 0000255A            199      LEA     NO_PASSWORD_MSG,A1
+0000121E  303C 000E                200      MOVE    #14,D0
+00001222  4E4F                     201      TRAP    #15
+00001224                           202      
+00001224  3239 00002558            203      MOVE.W  ATTEMPTS,D1
+0000122A  103C 0003                204      MOVE.B  #3,D0
+0000122E  4E4F                     205      TRAP #15
+00001230                           206      
+00001230  60B8                     207      BRA PASSWORD_PART
+00001232                           208  
+00001232                           209  GAME_STATS:
+00001232  6100 FF58                210      BSR     CLEAR_SCREEN
+00001236  43F9 0000259B            211      LEA     GAME_STATS_MSG,A1
+0000123C  303C 000E                212      MOVE    #14,D0
+00001240  4E4F                     213      TRAP    #15
+00001242                           214  
+00001242  3239 00003AC6            215      MOVE.W  BALANCE,D1
+00001248  103C 0003                216      MOVE.B  #3,D0
+0000124C  4E4F                     217      TRAP #15
+0000124E  4E75                     218      RTS 
+00001250                           219  
+00001250                           220  COMPARISON_PART:
+00001250  5279 00002558            221      ADD.W   #1, ATTEMPTS
+00001256  0C79 0002 00002558       222      CMP.W   #2, ATTEMPTS
+0000125E  6700 0A7C                223      BEQ GAME_OVER
+00001262  4E75                     224      RTS
+00001264                           225      
+00001264                           226  
+00001264                           227      
+00001264                           228  BEGINNING_PART:
+00001264  43F9 000025AB            229      LEA     BEGINNING_MSG,A1  
+0000126A  103C 000E                230      MOVE.B  #14,D0              
+0000126E  4E4F                     231      TRAP    #15                 
+00001270                           232      
+00001270  103C 0005                233      MOVE.B #5,D0
+00001274  4E4F                     234      TRAP #15
+00001276                           235      
+00001276  B23C 0059                236      CMP.B #$59,D1
+0000127A  6600 000C                237      BNE .NO_BEGINNING
+0000127E  33FC 0000 00002558       238      MOVE.W #0,ATTEMPTS
+00001286  4E75                     239      RTS
+00001288                           240      
+00001288                           241  .NO_BEGINNING:
+00001288  61C6                     242      BSR COMPARISON_PART
+0000128A                           243      
+0000128A  43F9 00003ACE            244      LEA     NO_BEGINNING_MSG,A1
+00001290  303C 000E                245      MOVE    #14,D0
+00001294  4E4F                     246      TRAP    #15
+00001296                           247      
+00001296  3239 00002558            248      MOVE.W  ATTEMPTS,D1
+0000129C  103C 0003                249      MOVE.B  #3,D0
+000012A0  4E4F                     250      TRAP #15
+000012A2                           251  
+000012A2  60C0                     252      BRA BEGINNING_PART
+000012A4                           253      
+000012A4                           254  WELCOME_PART:
+000012A4  43F9 00001CF4            255      LEA     WELCOME_MSG,A1
+000012AA  303C 000E                256      MOVE    #14,D0
+000012AE  4E4F                     257      TRAP    #15
+000012B0  4E75                     258      RTS
+000012B2                           259      
+000012B2                           260  WARNING_PART_1:
+000012B2  43F9 000025FE            261      LEA     WARNING_MSG_1,A1
+000012B8  303C 000E                262      MOVE    #14,D0
+000012BC  4E4F                     263      TRAP    #15
+000012BE  4E75                     264      RTS 
+000012C0                           265  
+000012C0                           266  PRESS_ENTER_PART:
+000012C0  43F9 00002612            267      LEA     PRESS_ENTER_MSG,A1  
+000012C6  103C 000E                268      MOVE.B  #14,D0              
+000012CA  4E4F                     269      TRAP    #15                 
+000012CC                           270      
+000012CC  103C 0005                271      MOVE.B #5,D0
+000012D0  4E4F                     272      TRAP #15
+000012D2                           273      
+000012D2  B23C 000D                274      CMP.B #$D,D1
+000012D6  6600 000C                275      BNE .NO_PRESS_ENTER
+000012DA  33FC 0000 00002558       276      MOVE.W #0,ATTEMPTS
+000012E2  4E75                     277      RTS
+000012E4                           278      
+000012E4                           279  .NO_PRESS_ENTER:
+000012E4  6100 FF6A                280      BSR COMPARISON_PART
+000012E8                           281      
+000012E8  43F9 00003AF1            282      LEA     NO_PRESS_ENTER_MSG,A1
+000012EE  303C 000E                283      MOVE    #14,D0
+000012F2  4E4F                     284      TRAP    #15
+000012F4                           285      
+000012F4  3239 00002558            286      MOVE.W  ATTEMPTS,D1
+000012FA  103C 0003                287      MOVE.B  #3,D0
+000012FE  4E4F                     288      TRAP #15
+00001300                           289  
+00001300  60BE                     290      BRA PRESS_ENTER_PART
+00001302                           291      
+00001302                           292  WARNING_PART_2:
+00001302  43F9 00002623            293      LEA     WARNING_MSG_2,A1
+00001308  303C 000E                294      MOVE    #14,D0
+0000130C  4E4F                     295      TRAP    #15
+0000130E  4E75                     296      RTS
+00001310                           297      
+00001310                           298  WARNING_PART_3:
+00001310  43F9 00002644            299      LEA     WARNING_MSG_3,A1
+00001316  303C 000E                300      MOVE    #14,D0
+0000131A  4E4F                     301      TRAP    #15
+0000131C  4E75                     302      RTS
+0000131E                           303      
+0000131E                           304  WARNING_PART_4:
+0000131E  43F9 0000267A            305      LEA     WARNING_MSG_4,A1
+00001324  303C 000E                306      MOVE    #14,D0
+00001328  4E4F                     307      TRAP    #15
+0000132A  4E75                     308      RTS
+0000132C                           309      
+0000132C                           310  WARNING_PART_5:
+0000132C  43F9 000026AF            311      LEA     WARNING_MSG_5,A1
+00001332  303C 000E                312      MOVE    #14,D0
+00001336  4E4F                     313      TRAP    #15
+00001338  4E75                     314      RTS
+0000133A                           315      
+0000133A                           316  WARNING_PART_6:
+0000133A  43F9 000026CE            317      LEA     WARNING_MSG_6,A1
+00001340  303C 000E                318      MOVE    #14,D0
+00001344  4E4F                     319      TRAP    #15
+00001346  4E75                     320      RTS
+00001348                           321      
+00001348                           322  WARNING_PART_7:
+00001348  43F9 000026EB            323      LEA     WARNING_MSG_7,A1
+0000134E  303C 000E                324      MOVE    #14,D0
+00001352  4E4F                     325      TRAP    #15
+00001354  4E75                     326      RTS
+00001356                           327      
+00001356                           328  WARNING_PART_8:
+00001356  43F9 00002707            329      LEA     WARNING_MSG_8,A1
+0000135C  303C 000E                330      MOVE    #14,D0
+00001360  4E4F                     331      TRAP    #15
+00001362  4E75                     332      RTS
+00001364                           333  
+00001364                           334  CHOICE_1:
+00001364  43F9 00002736            335      LEA     CHOICE_1_MSG,A1
+0000136A  303C 000E                336      MOVE    #14,D0
+0000136E  4E4F                     337      TRAP    #15
+00001370                           338      
+00001370  103C 0004                339      MOVE.B  #4,D0
+00001374  4E4F                     340      TRAP    #15
+00001376                           341  
+00001376                           342      
+00001376  B23C 0001                343      CMP.B    #1,D1
+0000137A  6600 0004                344      BNE     NO_CHOICE_1
+0000137E  4E75                     345      RTS
+00001380                           346  
+00001380                           347  
+00001380                           348  NO_CHOICE_1:    
+00001380  6100 FE0A                349      BSR     CLEAR_SCREEN
+00001384                           350      
+00001384  43F9 00002777            351      LEA     NO_CHOICE_1_MSG,A1
+0000138A  303C 000E                352      MOVE    #14,D0
+0000138E  4E4F                     353      TRAP    #15
+00001390                           354      
+00001390  3239 00003AC6            355      MOVE.W  BALANCE,D1
+00001396  103C 0003                356      MOVE.B  #3,D0
+0000139A  4E4F                     357      TRAP    #15
+0000139C                           358      
+0000139C  43F9 000027B1            359      LEA     NO_CHOICE_1_MSG_CONT,A1
+000013A2  303C 000E                360      MOVE    #14,D0
+000013A6  4E4F                     361      TRAP    #15
+000013A8                           362      
+000013A8  103C 0005                363      MOVE.B  #5,D0
+000013AC  4E4F                     364      TRAP    #15
+000013AE                           365      
+000013AE  0C79 0050 00003AC6       366      CMP.W   #80,BALANCE
+000013B6  6700 0006                367      BEQ     FINAL   
+000013BA  6100 0920                368      BSR     GAME_OVER 
+000013BE                           369  
+000013BE                           370  FINAL:
+000013BE  6100 FDCC                371      BSR CLEAR_SCREEN
+000013C2  33FC 0000 00003AC6       372      MOVE.W #0,BALANCE
+000013CA  6000 FC44                373      BRA GAME_LOOP
+000013CE                           374  
+000013CE                           375      
+000013CE                           376  GAME_LEVEL_1:
+000013CE                           377  
+000013CE                           378  
+000013CE                           379      
+000013CE  43F9 00002DDA            380      LEA     GAME_LEVEL_1_MSG,A1
+000013D4  303C 000E                381      MOVE    #14,D0
+000013D8  4E4F                     382      TRAP    #15
+000013DA                           383      
+000013DA  43F9 0000406A            384      LEA     GAME_LEVEL_1_INPUT_MSG,A1
+000013E0                           385      
+000013E0  303C 0002                386      MOVE    #2,D0
+000013E4  4E4F                     387      TRAP    #15
+000013E6                           388      
+000013E6  4DF9 00002E04            389      LEA     GAME_LEVEL_1_KEY,A6
+000013EC                           390      
+000013EC  1011                     391      MOVE.B  (A1),D0
+000013EE  B016                     392      CMP.B   (A6),D0
+000013F0                           393      
+000013F0  6600 000C                394      BNE     .NO_GAME_LEVEL_1
+000013F4  33FC 0000 00002558       395      MOVE.W #0,ATTEMPTS
+000013FC  4E75                     396      RTS
+000013FE                           397  
+000013FE                           398  .NO_GAME_LEVEL_1:
+000013FE  6100 FE50                399      BSR COMPARISON_PART
+00001402                           400      
+00001402  43F9 00003B16            401      LEA     NO_GAME_LEVEL_1_MSG,A1
+00001408  303C 000E                402      MOVE    #14,D0
+0000140C  4E4F                     403      TRAP    #15
+0000140E                           404      
+0000140E  3239 00002558            405      MOVE.W  ATTEMPTS,D1
+00001414  103C 0003                406      MOVE.B  #3,D0
+00001418  4E4F                     407      TRAP #15
+0000141A                           408      
+0000141A  6100 0004                409      BSR NEXT_LINE
+0000141E                           410  
+0000141E  60AE                     411      BRA GAME_LEVEL_1
+00001420                           412      
+00001420                           413  NEXT_LINE:
+00001420  43F9 00002D50            414      LEA     NEXT_LINE_MSG,A1
+00001426  303C 000E                415      MOVE    #14,D0
+0000142A  4E4F                     416      TRAP    #15
+0000142C  4E75                     417      RTS
+0000142E                           418      
+0000142E                           419  GAME_LEVEL_1_OUTPUT:
+0000142E  43F9 00002DF3            420      LEA     GAME_LEVEL_1_OUTPUT_MSG,A1
+00001434  303C 000E                421      MOVE    #14,D0
+00001438  4E4F                     422      TRAP    #15
+0000143A  4E75                     423      RTS
+0000143C                           424      
+0000143C                           425  GAME_LEVEL_2:
+0000143C                           426  
+0000143C                           427      ;LEA     USER_INPUT_MSG,A1
+0000143C                           428      ;MOVE    #14,D0
+0000143C                           429      ;TRAP    #15
+0000143C                           430  
+0000143C                           431      
+0000143C  43F9 00002D37            432      LEA     GAME_LEVEL_2_MSG,A1
+00001442  303C 000E                433      MOVE    #14,D0
+00001446  4E4F                     434      TRAP    #15
+00001448                           435      
+00001448  43F9 0000406E            436      LEA     GAME_LEVEL_2_INPUT_MSG,A1
+0000144E                           437  
+0000144E  303C 0002                438      MOVE    #2,D0
+00001452  4E4F                     439      TRAP    #15
+00001454                           440      
+00001454                           441      
+00001454  4DF9 00002D53            442      LEA     GAME_LEVEL_2_KEY,A6
+0000145A                           443      
+0000145A  1011                     444      MOVE.B  (A1),D0
+0000145C  B016                     445      CMP.B   (A6),D0
+0000145E                           446      
+0000145E  6600 000C                447      BNE     .NO_GAME_LEVEL_2
+00001462  33FC 0000 00002558       448      MOVE.W #0,ATTEMPTS
+0000146A  4E75                     449      RTS
+0000146C                           450      
+0000146C                           451  .NO_GAME_LEVEL_2:
+0000146C                           452  
+0000146C  6100 FDE2                453      BSR COMPARISON_PART
+00001470                           454      
+00001470  43F9 00003B4D            455      LEA     NO_GAME_LEVEL_2_MSG,A1
+00001476  303C 000E                456      MOVE    #14,D0
+0000147A  4E4F                     457      TRAP    #15
+0000147C                           458      
+0000147C  3239 00002558            459      MOVE.W  ATTEMPTS,D1
+00001482  103C 0003                460      MOVE.B  #3,D0
+00001486  4E4F                     461      TRAP #15
+00001488                           462      
+00001488  6196                     463      BSR NEXT_LINE
+0000148A                           464  
+0000148A  60B0                     465      BRA GAME_LEVEL_2
+0000148C                           466      
+0000148C                           467  GAME_LEVEL_2_OUTPUT:
+0000148C  43F9 00002D56            468      LEA     GAME_LEVEL_2_OUTPUT_MSG,A1
+00001492  303C 000E                469      MOVE    #14,D0
+00001496  4E4F                     470      TRAP    #15
+00001498  4E75                     471      RTS
+0000149A                           472      
+0000149A                           473  GAME_LEVEL_3:
+0000149A  43F9 00002E08            474      LEA     GAME_LEVEL_3_MSG,A1
+000014A0  303C 000E                475      MOVE    #14,D0
+000014A4  4E4F                     476      TRAP    #15
+000014A6                           477      
+000014A6  43F9 00004072            478      LEA     GAME_LEVEL_3_INPUT_MSG,A1
+000014AC                           479  
+000014AC                           480      
+000014AC  303C 0002                481      MOVE    #2,D0
+000014B0  4E4F                     482      TRAP    #15
+000014B2                           483      
+000014B2                           484      
+000014B2  4DF9 00002E26            485      LEA     GAME_LEVEL_3_KEY,A6
+000014B8                           486      
+000014B8  1011                     487      MOVE.B  (A1),D0
+000014BA  B016                     488      CMP.B   (A6),D0
+000014BC                           489      
+000014BC  6600 000C                490      BNE     .NO_GAME_LEVEL_3
+000014C0  33FC 0000 00002558       491      MOVE.W #0,ATTEMPTS
+000014C8  4E75                     492      RTS
+000014CA                           493      
+000014CA                           494  .NO_GAME_LEVEL_3:
+000014CA                           495      
+000014CA  6100 FD84                496      BSR COMPARISON_PART
+000014CE                           497      
+000014CE  43F9 00003B80            498      LEA     NO_GAME_LEVEL_3_MSG,A1
+000014D4  303C 000E                499      MOVE    #14,D0
+000014D8  4E4F                     500      TRAP    #15
+000014DA                           501      
+000014DA  3239 00002558            502      MOVE.W  ATTEMPTS,D1
+000014E0  103C 0003                503      MOVE.B  #3,D0
+000014E4  4E4F                     504      TRAP #15
+000014E6                           505      
+000014E6  6100 FF38                506      BSR NEXT_LINE
+000014EA                           507  
+000014EA  60AE                     508      BRA GAME_LEVEL_3
+000014EC                           509      
+000014EC                           510  GAME_LEVEL_3_OUTPUT:
+000014EC  43F9 00002E23            511      LEA     GAME_LEVEL_3_OUTPUT_MSG,A1
+000014F2  303C 000E                512      MOVE    #14,D0
+000014F6  4E4F                     513      TRAP    #15
+000014F8  4E75                     514      RTS
+000014FA                           515      
+000014FA                           516  GAME_LEVEL_4:
+000014FA  43F9 00002E33            517      LEA     GAME_LEVEL_4_MSG,A1
+00001500  303C 000E                518      MOVE    #14,D0
+00001504  4E4F                     519      TRAP    #15
+00001506                           520      
+00001506  43F9 00004076            521      LEA     GAME_LEVEL_4_INPUT_MSG,A1
+0000150C                           522      
+0000150C  303C 0002                523      MOVE    #2,D0
+00001510  4E4F                     524      TRAP    #15
+00001512                           525      
+00001512                           526      
+00001512  4DF9 00002EF8            527      LEA     GAME_LEVEL_4_KEY,A6
+00001518                           528      
+00001518  1011                     529      MOVE.B  (A1),D0
+0000151A  B016                     530      CMP.B   (A6),D0
+0000151C                           531      
+0000151C  6600 000C                532      BNE     .NO_GAME_LEVEL_4
+00001520  33FC 0000 00002558       533      MOVE.W #0,ATTEMPTS
+00001528  4E75                     534      RTS
+0000152A                           535      
+0000152A                           536  .NO_GAME_LEVEL_4:
+0000152A                           537      
+0000152A  6100 FD24                538      BSR COMPARISON_PART
+0000152E                           539      
+0000152E  43F9 00003BC0            540      LEA     NO_GAME_LEVEL_4_MSG,A1
+00001534  303C 000E                541      MOVE    #14,D0
+00001538  4E4F                     542      TRAP    #15
+0000153A                           543      
+0000153A  3239 00002558            544      MOVE.W  ATTEMPTS,D1
+00001540  103C 0003                545      MOVE.B  #3,D0
+00001544  4E4F                     546      TRAP #15
+00001546                           547      
+00001546  6100 FED8                548      BSR NEXT_LINE
+0000154A                           549  
+0000154A  60AE                     550      BRA GAME_LEVEL_4
+0000154C                           551  
+0000154C                           552      
+0000154C                           553  GAME_LEVEL_4_OUTPUT:
+0000154C  43F9 00002E58            554      LEA     GAME_LEVEL_4_OUTPUT_MSG,A1
+00001552  303C 000E                555      MOVE    #14,D0
+00001556  4E4F                     556      TRAP    #15
+00001558  4E75                     557      RTS
+0000155A                           558      
+0000155A                           559  GAME_LEVEL_5:
+0000155A  43F9 00002EFB            560      LEA     GAME_LEVEL_5_MSG,A1
+00001560  303C 000E                561      MOVE    #14,D0
+00001564  4E4F                     562      TRAP    #15
+00001566                           563      
+00001566  43F9 0000407A            564      LEA     GAME_LEVEL_5_INPUT_MSG,A1
+0000156C                           565      
+0000156C  303C 0002                566      MOVE    #2,D0
+00001570  4E4F                     567      TRAP    #15
+00001572                           568      
+00001572                           569      
+00001572  4DF9 00002F79            570      LEA     GAME_LEVEL_5_KEY,A6
+00001578                           571      
+00001578  1011                     572      MOVE.B  (A1),D0
+0000157A  B016                     573      CMP.B   (A6),D0
+0000157C                           574      
+0000157C  6600 000C                575      BNE     .NO_GAME_LEVEL_5
+00001580  33FC 0000 00002558       576      MOVE.W #0,ATTEMPTS
+00001588  4E75                     577      RTS
+0000158A                           578      
+0000158A                           579  .NO_GAME_LEVEL_5:
+0000158A  6100 FCC4                580      BSR COMPARISON_PART
+0000158E                           581      
+0000158E  43F9 00003C36            582      LEA     NO_GAME_LEVEL_5_MSG,A1
+00001594  303C 000E                583      MOVE    #14,D0
+00001598  4E4F                     584      TRAP    #15
+0000159A                           585      
+0000159A  3239 00002558            586      MOVE.W  ATTEMPTS,D1
+000015A0  103C 0003                587      MOVE.B  #3,D0
+000015A4  4E4F                     588      TRAP #15
+000015A6                           589      
+000015A6  6100 FE78                590      BSR NEXT_LINE
+000015AA                           591  
+000015AA  60AE                     592      BRA GAME_LEVEL_5
+000015AC                           593      
+000015AC                           594  GAME_LEVEL_5_OUTPUT:
+000015AC  43F9 00002F20            595      LEA     GAME_LEVEL_5_OUTPUT_MSG,A1
+000015B2  303C 000E                596      MOVE    #14,D0
+000015B6  4E4F                     597      TRAP    #15
+000015B8  4E75                     598      RTS
+000015BA                           599      
+000015BA                           600  CHOICE_2:    
+000015BA  103C 0004                601      MOVE.B  #4,D0
+000015BE  4E4F                     602      TRAP    #15
+000015C0                           603  
+000015C0                           604      
+000015C0  B23C 0002                605      CMP.B    #2,D1
+000015C4  6600 000C                606      BNE     .NO_CHOICE_2
+000015C8  33FC 0000 00002558       607      MOVE.W #0,ATTEMPTS
+000015D0  4E75                     608      RTS
+000015D2                           609  
+000015D2                           610  
+000015D2                           611  .NO_CHOICE_2:    
+000015D2  6100 FC7C                612      BSR COMPARISON_PART
+000015D6                           613      
+000015D6  43F9 00003BF3            614      LEA     NO_CHOICE_2_MSG,A1
+000015DC  303C 000E                615      MOVE    #14,D0
+000015E0  4E4F                     616      TRAP    #15
+000015E2                           617      
+000015E2  3239 00002558            618      MOVE.W  ATTEMPTS,D1
+000015E8  103C 0003                619      MOVE.B  #3,D0
+000015EC  4E4F                     620      TRAP #15
+000015EE                           621      
+000015EE  6100 FE30                622      BSR NEXT_LINE
+000015F2                           623  
+000015F2  60C6                     624      BRA CHOICE_2
+000015F4                           625  
+000015F4                           626      
+000015F4                           627  GAME_LEVEL_6:
+000015F4  43F9 00002F8B            628      LEA     GAME_LEVEL_6_MSG,A1
+000015FA  303C 000E                629      MOVE    #14,D0
+000015FE  4E4F                     630      TRAP    #15
+00001600  4E75                     631      RTS
+00001602                           632      
+00001602                           633  GAME_LEVEL_7:
+00001602  43F9 00002FDD            634      LEA     GAME_LEVEL_7_MSG,A1
+00001608  303C 000E                635      MOVE    #14,D0
+0000160C  4E4F                     636      TRAP    #15
+0000160E                           637      
+0000160E  43F9 00004082            638      LEA     GAME_LEVEL_7_INPUT_MSG,A1
+00001614                           639      
+00001614  303C 0002                640      MOVE    #2,D0
+00001618  4E4F                     641      TRAP    #15
+0000161A                           642      
+0000161A                           643      
+0000161A  4DF9 00003002            644      LEA     GAME_LEVEL_7_KEY,A6
+00001620                           645      
+00001620  1011                     646      MOVE.B  (A1),D0
+00001622  B016                     647      CMP.B   (A6),D0
+00001624                           648      
+00001624  6600 000C                649      BNE     .NO_GAME_LEVEL_7
+00001628  33FC 0000 00002558       650      MOVE.W #0,ATTEMPTS
+00001630  4E75                     651      RTS
+00001632                           652      
+00001632                           653  .NO_GAME_LEVEL_7:
+00001632  6100 FC1C                654      BSR COMPARISON_PART
+00001636                           655      
+00001636  43F9 00003C9F            656      LEA     NO_GAME_LEVEL_7_MSG,A1
+0000163C  303C 000E                657      MOVE    #14,D0
+00001640  4E4F                     658      TRAP    #15
+00001642                           659      
+00001642  3239 00002558            660      MOVE.W  ATTEMPTS,D1
+00001648  103C 0003                661      MOVE.B  #3,D0
+0000164C  4E4F                     662      TRAP #15
+0000164E                           663      
+0000164E  6100 FDD0                664      BSR NEXT_LINE
+00001652                           665  
+00001652  60AE                     666      BRA GAME_LEVEL_7
+00001654                           667      
+00001654                           668  GAME_LEVEL_8:
+00001654  43F9 00003013            669      LEA     GAME_LEVEL_8_MSG,A1
+0000165A  303C 000E                670      MOVE    #14,D0
+0000165E  4E4F                     671      TRAP    #15
+00001660                           672      
+00001660  43F9 00004086            673      LEA     GAME_LEVEL_8_INPUT_MSG,A1
+00001666                           674      
+00001666  303C 0002                675      MOVE    #2,D0
+0000166A  4E4F                     676      TRAP    #15
+0000166C                           677      
+0000166C                           678      
+0000166C  4DF9 000030D5            679      LEA     GAME_LEVEL_8_KEY,A6
+00001672                           680      
+00001672  1011                     681      MOVE.B  (A1),D0
+00001674  B016                     682      CMP.B   (A6),D0
+00001676                           683      
+00001676  6600 000C                684      BNE     .NO_GAME_LEVEL_8
+0000167A  33FC 0000 00002558       685      MOVE.W #0,ATTEMPTS
+00001682  4E75                     686      RTS
+00001684                           687      
+00001684                           688  .NO_GAME_LEVEL_8:
+00001684  6100 FBCA                689      BSR COMPARISON_PART
+00001688                           690      
+00001688  43F9 00003CCD            691      LEA     NO_GAME_LEVEL_8_MSG,A1
+0000168E  303C 000E                692      MOVE    #14,D0
+00001692  4E4F                     693      TRAP    #15
+00001694                           694      
+00001694  3239 00002558            695      MOVE.W  ATTEMPTS,D1
+0000169A  103C 0003                696      MOVE.B  #3,D0
+0000169E  4E4F                     697      TRAP #15
+000016A0                           698      
+000016A0  6100 FD7E                699      BSR NEXT_LINE
+000016A4                           700  
+000016A4  60AE                     701      BRA GAME_LEVEL_8
+000016A6                           702      
+000016A6                           703  GAME_LEVEL_8_OUTPUT:
+000016A6  43F9 00003038            704      LEA     GAME_LEVEL_8_OUTPUT_MSG,A1
+000016AC  303C 000E                705      MOVE    #14,D0
+000016B0  4E4F                     706      TRAP    #15
+000016B2  4E75                     707      RTS
+000016B4                           708      
+000016B4                           709  GAME_LEVEL_9:
+000016B4  43F9 000030D8            710      LEA     GAME_LEVEL_9_MSG,A1
+000016BA  303C 000E                711      MOVE    #14,D0
+000016BE  4E4F                     712      TRAP    #15
+000016C0                           713      
+000016C0  43F9 0000408A            714      LEA     GAME_LEVEL_9_INPUT_MSG,A1
+000016C6                           715      
+000016C6  303C 0002                716      MOVE    #2,D0
+000016CA  4E4F                     717      TRAP    #15
+000016CC                           718      
+000016CC                           719      
+000016CC  4DF9 0000319B            720      LEA     GAME_LEVEL_9_KEY,A6
+000016D2                           721      
+000016D2  1011                     722      MOVE.B  (A1),D0
+000016D4  B016                     723      CMP.B   (A6),D0
+000016D6                           724      
+000016D6  6600 000C                725      BNE     .NO_GAME_LEVEL_9
+000016DA  33FC 0000 00002558       726      MOVE.W #0,ATTEMPTS
+000016E2  4E75                     727      RTS
+000016E4                           728      
+000016E4                           729  .NO_GAME_LEVEL_9:
+000016E4  6100 FB6A                730      BSR COMPARISON_PART
+000016E8                           731      
+000016E8  43F9 00003D02            732      LEA     NO_GAME_LEVEL_9_MSG,A1
+000016EE  303C 000E                733      MOVE    #14,D0
+000016F2  4E4F                     734      TRAP    #15
+000016F4                           735      
+000016F4  3239 00002558            736      MOVE.W  ATTEMPTS,D1
+000016FA  103C 0003                737      MOVE.B  #3,D0
+000016FE  4E4F                     738      TRAP #15
+00001700                           739      
+00001700  6100 FD1E                740      BSR NEXT_LINE
+00001704                           741  
+00001704  60AE                     742      BRA GAME_LEVEL_9
+00001706                           743      
+00001706                           744  
+00001706                           745  GAME_LEVEL_9_OUTPUT:
+00001706  0679 000F 00003AC6       746      ADD.W   #15, BALANCE
+0000170E  43F9 000030FD            747      LEA     GAME_LEVEL_9_OUTPUT_MSG,A1
+00001714  303C 000E                748      MOVE    #14,D0
+00001718  4E4F                     749      TRAP    #15
+0000171A  4E75                     750      RTS
+0000171C                           751      
+0000171C                           752  GAME_LEVEL_10:
+0000171C  43F9 000031B2            753      LEA     GAME_LEVEL_10_MSG,A1
+00001722  303C 000E                754      MOVE    #14,D0
+00001726  4E4F                     755      TRAP    #15
+00001728                           756      
+00001728  43F9 0000408E            757      LEA     GAME_LEVEL_10_INPUT_MSG,A1
+0000172E                           758      
+0000172E  303C 0002                759      MOVE    #2,D0
+00001732  4E4F                     760      TRAP    #15
+00001734                           761      
+00001734                           762      
+00001734  4DF9 000031FC            763      LEA     GAME_LEVEL_10_KEY,A6
+0000173A                           764      
+0000173A  1011                     765      MOVE.B  (A1),D0
+0000173C  B016                     766      CMP.B   (A6),D0
+0000173E                           767      
+0000173E  6600 000C                768      BNE     .NO_GAME_LEVEL_10
+00001742  33FC 0000 00002558       769      MOVE.W #0,ATTEMPTS
+0000174A  4E75                     770      RTS
+0000174C                           771      
+0000174C                           772  .NO_GAME_LEVEL_10:
+0000174C  6100 FB02                773      BSR COMPARISON_PART
+00001750                           774      
+00001750  43F9 00003D33            775      LEA     NO_GAME_LEVEL_10_MSG,A1
+00001756  303C 000E                776      MOVE    #14,D0
+0000175A  4E4F                     777      TRAP    #15
+0000175C                           778      
+0000175C  3239 00002558            779      MOVE.W  ATTEMPTS,D1
+00001762  103C 0003                780      MOVE.B  #3,D0
+00001766  4E4F                     781      TRAP #15
+00001768                           782      
+00001768  6100 FCB6                783      BSR NEXT_LINE
+0000176C                           784  
+0000176C  60AE                     785      BRA GAME_LEVEL_10
+0000176E                           786      
+0000176E                           787  
+0000176E                           788  GAME_LEVEL_10_OUTPUT:
+0000176E  6100 FA1C                789      BSR CLEAR_SCREEN
+00001772  4E75                     790      RTS
+00001774                           791      
+00001774                           792  GAME_LEVEL_11:
+00001774  43F9 00003202            793      LEA     GAME_LEVEL_11_MSG,A1
+0000177A  303C 000E                794      MOVE    #14,D0
+0000177E  4E4F                     795      TRAP    #15
+00001780                           796      
+00001780  43F9 00004092            797      LEA     GAME_LEVEL_11_INPUT_MSG,A1
+00001786                           798      
+00001786  303C 0002                799      MOVE    #2,D0
+0000178A  4E4F                     800      TRAP    #15
+0000178C                           801      
+0000178C                           802      
+0000178C  4DF9 00003227            803      LEA     GAME_LEVEL_11_KEY,A6
+00001792                           804      
+00001792  1011                     805      MOVE.B  (A1),D0
+00001794  B016                     806      CMP.B   (A6),D0
+00001796                           807      
+00001796  6600 000C                808      BNE     .NO_GAME_LEVEL_11
+0000179A  33FC 0000 00002558       809      MOVE.W #0,ATTEMPTS
+000017A2  4E75                     810      RTS
+000017A4                           811      
+000017A4                           812  .NO_GAME_LEVEL_11:
+000017A4  6100 FAAA                813      BSR COMPARISON_PART
+000017A8                           814      
+000017A8  43F9 00003D64            815      LEA     NO_GAME_LEVEL_11_MSG,A1
+000017AE  303C 000E                816      MOVE    #14,D0
+000017B2  4E4F                     817      TRAP    #15
+000017B4                           818      
+000017B4  3239 00002558            819      MOVE.W  ATTEMPTS,D1
+000017BA  103C 0003                820      MOVE.B  #3,D0
+000017BE  4E4F                     821      TRAP #15
+000017C0                           822      
+000017C0  6100 FC5E                823      BSR NEXT_LINE
+000017C4                           824  
+000017C4  60AE                     825      BRA GAME_LEVEL_11
+000017C6                           826      
+000017C6                           827  ;GAME_LEVEL_11_OUTPUT:
+000017C6                           828   ;   LEA     GAME_LEVEL_11_OUTPUT_MSG,A1
+000017C6                           829    ;  MOVE    #14,D0
+000017C6                           830     ; TRAP    #15
+000017C6                           831      ;RTS
+000017C6                           832      
+000017C6                           833  GAME_LEVEL_12:
+000017C6  43F9 0000323D            834      LEA     GAME_LEVEL_12_MSG,A1
+000017CC  303C 000E                835      MOVE    #14,D0
+000017D0  4E4F                     836      TRAP    #15
+000017D2                           837      
+000017D2  43F9 00004096            838      LEA     GAME_LEVEL_12_INPUT_MSG,A1
+000017D8                           839      
+000017D8  303C 0002                840      MOVE    #2,D0
+000017DC  4E4F                     841      TRAP    #15
+000017DE                           842      
+000017DE                           843      
+000017DE  4DF9 00003300            844      LEA     GAME_LEVEL_12_KEY,A6
+000017E4                           845      
+000017E4  1011                     846      MOVE.B  (A1),D0
+000017E6  B016                     847      CMP.B   (A6),D0
+000017E8                           848      
+000017E8  6600 000C                849      BNE     .NO_GAME_LEVEL_12
+000017EC  33FC 0000 00002558       850      MOVE.W  #0,ATTEMPTS
+000017F4  4E75                     851      RTS
+000017F6                           852      
+000017F6                           853  .NO_GAME_LEVEL_12:
+000017F6  6100 FA58                854      BSR COMPARISON_PART
+000017FA                           855      
+000017FA  43F9 00003DAB            856      LEA     NO_GAME_LEVEL_12_MSG,A1
+00001800  303C 000E                857      MOVE    #14,D0
+00001804  4E4F                     858      TRAP    #15
+00001806                           859      
+00001806  3239 00002558            860      MOVE.W  ATTEMPTS,D1
+0000180C  103C 0003                861      MOVE.B  #3,D0
+00001810  4E4F                     862      TRAP    #15
+00001812                           863      
+00001812  6100 FC0C                864      BSR NEXT_LINE
+00001816                           865  
+00001816  60AE                     866      BRA GAME_LEVEL_12
+00001818                           867      
+00001818                           868  GAME_LEVEL_12_OUTPUT:
+00001818  43F9 00003262            869      LEA     GAME_LEVEL_12_OUTPUT_MSG,A1
+0000181E  303C 000E                870      MOVE    #14,D0
+00001822  4E4F                     871      TRAP    #15
+00001824  4E75                     872      RTS
+00001826                           873      
+00001826                           874  GAME_LEVEL_13:
+00001826  43F9 00003303            875      LEA     GAME_LEVEL_13_MSG,A1
+0000182C  303C 000E                876      MOVE    #14,D0
+00001830  4E4F                     877      TRAP    #15
+00001832                           878      
+00001832  43F9 0000409A            879      LEA     GAME_LEVEL_13_INPUT_MSG,A1
+00001838                           880      
+00001838  303C 0002                881      MOVE    #2,D0
+0000183C  4E4F                     882      TRAP    #15
+0000183E                           883      
+0000183E                           884      
+0000183E  4DF9 000033B3            885      LEA     GAME_LEVEL_13_KEY,A6
+00001844                           886      
+00001844  1011                     887      MOVE.B  (A1),D0
+00001846  B016                     888      CMP.B   (A6),D0
+00001848                           889      
+00001848  6600 000C                890      BNE     .NO_GAME_LEVEL_13
+0000184C  33FC 0000 00002558       891      MOVE.W  #0,ATTEMPTS
+00001854  4E75                     892      RTS
+00001856                           893      
+00001856                           894  .NO_GAME_LEVEL_13:
+00001856  6100 F9F8                895      BSR COMPARISON_PART
+0000185A                           896      
+0000185A  43F9 00003DDD            897      LEA     NO_GAME_LEVEL_13_MSG,A1
+00001860  303C 000E                898      MOVE    #14,D0
+00001864  4E4F                     899      TRAP    #15
+00001866                           900      
+00001866  3239 00002558            901      MOVE.W  ATTEMPTS,D1
+0000186C  103C 0003                902      MOVE.B  #3,D0
+00001870  4E4F                     903      TRAP    #15
+00001872                           904      
+00001872  6100 FBAC                905      BSR NEXT_LINE
+00001876                           906  
+00001876  60AE                     907      BRA GAME_LEVEL_13
+00001878                           908      
+00001878                           909  GAME_LEVEL_13_OUTPUT:
+00001878  0679 000F 00003AC6       910      ADD.W   #15, BALANCE
+00001880  43F9 00003328            911      LEA     GAME_LEVEL_13_OUTPUT_MSG,A1
+00001886  303C 000E                912      MOVE    #14,D0
+0000188A  4E4F                     913      TRAP    #15
+0000188C  4E75                     914      RTS
+0000188E                           915      
+0000188E                           916  GAME_LEVEL_14:
+0000188E  43F9 000033C4            917      LEA     GAME_LEVEL_14_MSG,A1
+00001894  303C 000E                918      MOVE    #14,D0
+00001898  4E4F                     919      TRAP    #15
+0000189A                           920      
+0000189A  43F9 0000409E            921      LEA     GAME_LEVEL_14_INPUT_MSG,A1
+000018A0                           922      
+000018A0  303C 0002                923      MOVE    #2,D0
+000018A4  4E4F                     924      TRAP    #15
+000018A6                           925      
+000018A6                           926      
+000018A6  4DF9 000033E9            927      LEA     GAME_LEVEL_14_KEY,A6
+000018AC                           928      
+000018AC  1011                     929      MOVE.B  (A1),D0
+000018AE  B016                     930      CMP.B   (A6),D0
+000018B0                           931      
+000018B0  6600 000C                932      BNE     .NO_GAME_LEVEL_14
+000018B4  33FC 0000 00002558       933      MOVE.W  #0,ATTEMPTS
+000018BC  4E75                     934      RTS
+000018BE                           935      
+000018BE                           936  .NO_GAME_LEVEL_14:
+000018BE  6100 F990                937      BSR COMPARISON_PART
+000018C2                           938      
+000018C2  43F9 00003E08            939      LEA     NO_GAME_LEVEL_14_MSG,A1
+000018C8  303C 000E                940      MOVE    #14,D0
+000018CC  4E4F                     941      TRAP    #15
+000018CE                           942      
+000018CE  3239 00002558            943      MOVE.W  ATTEMPTS,D1
+000018D4  103C 0003                944      MOVE.B  #3,D0
+000018D8  4E4F                     945      TRAP    #15
+000018DA                           946      
+000018DA  6100 FB44                947      BSR NEXT_LINE
+000018DE                           948  
+000018DE  60AE                     949      BRA GAME_LEVEL_14
+000018E0                           950      
+000018E0                           951  
+000018E0                           952      
+000018E0                           953  GAME_LEVEL_15:
+000018E0  43F9 000033F9            954      LEA     GAME_LEVEL_15_MSG,A1
+000018E6  303C 000E                955      MOVE    #14,D0
+000018EA  4E4F                     956      TRAP    #15
+000018EC                           957      
+000018EC  43F9 000040A2            958      LEA     GAME_LEVEL_15_INPUT_MSG,A1
+000018F2                           959      
+000018F2  303C 0002                960      MOVE    #2,D0
+000018F6  4E4F                     961      TRAP    #15
+000018F8                           962      
+000018F8                           963      
+000018F8  4DF9 000034BD            964      LEA     GAME_LEVEL_15_KEY,A6
+000018FE                           965      
+000018FE  1011                     966      MOVE.B  (A1),D0
+00001900  B016                     967      CMP.B   (A6),D0
+00001902                           968      
+00001902  6600 000C                969      BNE     .NO_GAME_LEVEL_15
+00001906  33FC 0000 00002558       970      MOVE.W  #0,ATTEMPTS
+0000190E  4E75                     971      RTS
+00001910                           972      
+00001910                           973  .NO_GAME_LEVEL_15:
+00001910  6100 F93E                974      BSR COMPARISON_PART
+00001914                           975      
+00001914  43F9 00003E3A            976      LEA     NO_GAME_LEVEL_15_MSG,A1
+0000191A  303C 000E                977      MOVE    #14,D0
+0000191E  4E4F                     978      TRAP    #15
+00001920                           979      
+00001920  3239 00002558            980      MOVE.W  ATTEMPTS,D1
+00001926  103C 0003                981      MOVE.B  #3,D0
+0000192A  4E4F                     982      TRAP    #15
+0000192C                           983      
+0000192C  6100 FAF2                984      BSR NEXT_LINE
+00001930                           985  
+00001930  60AE                     986      BRA GAME_LEVEL_15
+00001932                           987      
+00001932                           988  GAME_LEVEL_15_OUTPUT:
+00001932                           989      ;ADD.W   #15, BALANCE
+00001932  43F9 0000341E            990      LEA     GAME_LEVEL_15_OUTPUT_MSG,A1
+00001938  303C 000E                991      MOVE    #14,D0
+0000193C  4E4F                     992      TRAP    #15
+0000193E  4E75                     993      RTS
+00001940                           994      
+00001940                           995  GAME_LEVEL_16:
+00001940  43F9 000034C0            996      LEA     GAME_LEVEL_16_MSG,A1
+00001946  303C 000E                997      MOVE    #14,D0
+0000194A  4E4F                     998      TRAP    #15
+0000194C                           999      
+0000194C  43F9 000040A6           1000      LEA     GAME_LEVEL_16_INPUT_MSG,A1
+00001952                          1001      
+00001952  303C 0002               1002      MOVE    #2,D0
+00001956  4E4F                    1003      TRAP    #15
+00001958                          1004      
+00001958                          1005      
+00001958  4DF9 000035C7           1006      LEA     GAME_LEVEL_16_KEY,A6
+0000195E                          1007      
+0000195E  1011                    1008      MOVE.B  (A1),D0
+00001960  B016                    1009      CMP.B   (A6),D0
+00001962                          1010      
+00001962  6600 000C               1011      BNE     .NO_GAME_LEVEL_16
+00001966  33FC 0000 00002558      1012      MOVE.W  #0,ATTEMPTS
+0000196E  4E75                    1013      RTS
+00001970                          1014      
+00001970                          1015  .NO_GAME_LEVEL_16:
+00001970  6100 F8DE               1016      BSR COMPARISON_PART
+00001974                          1017      
+00001974  43F9 00003E6F           1018      LEA     NO_GAME_LEVEL_16_MSG,A1
+0000197A  303C 000E               1019      MOVE    #14,D0
+0000197E  4E4F                    1020      TRAP    #15
+00001980                          1021      
+00001980  3239 00002558           1022      MOVE.W  ATTEMPTS,D1
+00001986  103C 0003               1023      MOVE.B  #3,D0
+0000198A  4E4F                    1024      TRAP    #15
+0000198C                          1025      
+0000198C  6100 FA92               1026      BSR NEXT_LINE
+00001990                          1027  
+00001990  60AE                    1028      BRA GAME_LEVEL_16
+00001992                          1029      
+00001992                          1030  GAME_LEVEL_16_OUTPUT:
+00001992  0679 000F 00003AC6      1031      ADD.W   #15, BALANCE
+0000199A  43F9 000034E5           1032      LEA     GAME_LEVEL_16_OUTPUT_MSG,A1
+000019A0  303C 000E               1033      MOVE    #14,D0
+000019A4  4E4F                    1034      TRAP    #15
+000019A6  4E75                    1035      RTS
+000019A8                          1036      
+000019A8                          1037  GAME_LEVEL_17:
+000019A8  43F9 000035E9           1038      LEA     GAME_LEVEL_17_MSG,A1
+000019AE  303C 000E               1039      MOVE    #14,D0
+000019B2  4E4F                    1040      TRAP    #15
+000019B4                          1041      
+000019B4  43F9 000040AA           1042      LEA     GAME_LEVEL_17_INPUT_MSG,A1
+000019BA                          1043      
+000019BA  303C 0002               1044      MOVE    #2,D0
+000019BE  4E4F                    1045      TRAP    #15
+000019C0                          1046      
+000019C0                          1047      
+000019C0  4DF9 0000360E           1048      LEA     GAME_LEVEL_17_KEY,A6
+000019C6                          1049      
+000019C6  1011                    1050      MOVE.B  (A1),D0
+000019C8  B016                    1051      CMP.B   (A6),D0
+000019CA                          1052      
+000019CA  6600 000C               1053      BNE     .NO_GAME_LEVEL_17
+000019CE  33FC 0000 00002558      1054      MOVE.W  #0,ATTEMPTS
+000019D6  4E75                    1055      RTS
+000019D8                          1056      
+000019D8                          1057  .NO_GAME_LEVEL_17:
+000019D8  6100 F876               1058      BSR COMPARISON_PART
+000019DC                          1059      
+000019DC  43F9 00003EAA           1060      LEA     NO_GAME_LEVEL_17_MSG,A1
+000019E2  303C 000E               1061      MOVE    #14,D0
+000019E6  4E4F                    1062      TRAP    #15
+000019E8                          1063      
+000019E8  3239 00002558           1064      MOVE.W  ATTEMPTS,D1
+000019EE  103C 0003               1065      MOVE.B  #3,D0
+000019F2  4E4F                    1066      TRAP    #15
+000019F4                          1067      
+000019F4  6100 FA2A               1068      BSR NEXT_LINE
+000019F8                          1069  
+000019F8  60AE                    1070      BRA GAME_LEVEL_17
+000019FA                          1071      
+000019FA                          1072  
+000019FA                          1073      
+000019FA                          1074  GAME_LEVEL_18:
+000019FA  43F9 00003631           1075      LEA     GAME_LEVEL_18_MSG,A1
+00001A00  303C 000E               1076      MOVE    #14,D0
+00001A04  4E4F                    1077      TRAP    #15
+00001A06                          1078      
+00001A06  43F9 000040AE           1079      LEA     GAME_LEVEL_18_INPUT_MSG,A1
+00001A0C                          1080      
+00001A0C  303C 0002               1081      MOVE    #2,D0
+00001A10  4E4F                    1082      TRAP    #15
+00001A12                          1083      
+00001A12                          1084      
+00001A12  4DF9 000036F5           1085      LEA     GAME_LEVEL_18_KEY,A6
+00001A18                          1086      
+00001A18  1011                    1087      MOVE.B  (A1),D0
+00001A1A  B016                    1088      CMP.B   (A6),D0
+00001A1C                          1089      
+00001A1C  6600 000C               1090      BNE     .NO_GAME_LEVEL_18
+00001A20  33FC 0000 00002558      1091      MOVE.W  #0,ATTEMPTS
+00001A28  4E75                    1092      RTS
+00001A2A                          1093      
+00001A2A                          1094  .NO_GAME_LEVEL_18:
+00001A2A  6100 F824               1095      BSR COMPARISON_PART
+00001A2E                          1096      
+00001A2E  43F9 00003EEA           1097      LEA     NO_GAME_LEVEL_18_MSG,A1
+00001A34  303C 000E               1098      MOVE    #14,D0
+00001A38  4E4F                    1099      TRAP    #15
+00001A3A                          1100      
+00001A3A  3239 00002558           1101      MOVE.W  ATTEMPTS,D1
+00001A40  103C 0003               1102      MOVE.B  #3,D0
+00001A44  4E4F                    1103      TRAP    #15
+00001A46                          1104      
+00001A46  6100 F9D8               1105      BSR NEXT_LINE
+00001A4A                          1106  
+00001A4A  60AE                    1107      BRA GAME_LEVEL_18
+00001A4C                          1108      
+00001A4C                          1109  GAME_LEVEL_18_OUTPUT:
+00001A4C                          1110      ;ADD.W   #15, BALANCE
+00001A4C  43F9 00003656           1111      LEA     GAME_LEVEL_18_OUTPUT_MSG,A1
+00001A52  303C 000E               1112      MOVE    #14,D0
+00001A56  4E4F                    1113      TRAP    #15
+00001A58  4E75                    1114      RTS
+00001A5A                          1115      
+00001A5A                          1116  GAME_LEVEL_19:
+00001A5A  43F9 000036F8           1117      LEA     GAME_LEVEL_19_MSG,A1
+00001A60  303C 000E               1118      MOVE    #14,D0
+00001A64  4E4F                    1119      TRAP    #15
+00001A66                          1120      
+00001A66  43F9 000040B2           1121      LEA     GAME_LEVEL_19_INPUT_MSG,A1
+00001A6C                          1122      
+00001A6C  303C 0002               1123      MOVE    #2,D0
+00001A70  4E4F                    1124      TRAP    #15
+00001A72                          1125      
+00001A72                          1126      
+00001A72  4DF9 000037F4           1127      LEA     GAME_LEVEL_19_KEY,A6
+00001A78                          1128      
+00001A78  1011                    1129      MOVE.B  (A1),D0
+00001A7A  B016                    1130      CMP.B   (A6),D0
+00001A7C                          1131      
+00001A7C  6600 000C               1132      BNE     .NO_GAME_LEVEL_19
+00001A80  33FC 0000 00002558      1133      MOVE.W  #0,ATTEMPTS
+00001A88  4E75                    1134      RTS
+00001A8A                          1135      
+00001A8A                          1136  .NO_GAME_LEVEL_19:
+00001A8A  6100 F7C4               1137      BSR COMPARISON_PART
+00001A8E                          1138      
+00001A8E  43F9 00003F1E           1139      LEA     NO_GAME_LEVEL_19_MSG,A1
+00001A94  303C 000E               1140      MOVE    #14,D0
+00001A98  4E4F                    1141      TRAP    #15
+00001A9A                          1142      
+00001A9A  3239 00002558           1143      MOVE.W  ATTEMPTS,D1
+00001AA0  103C 0003               1144      MOVE.B  #3,D0
+00001AA4  4E4F                    1145      TRAP    #15
+00001AA6                          1146      
+00001AA6  6100 F978               1147      BSR NEXT_LINE
+00001AAA                          1148  
+00001AAA  60AE                    1149      BRA GAME_LEVEL_19
+00001AAC                          1150      
+00001AAC                          1151  GAME_LEVEL_19_OUTPUT:
+00001AAC  0679 000F 00003AC6      1152      ADD.W   #15, BALANCE
+00001AB4  43F9 0000371D           1153      LEA     GAME_LEVEL_19_OUTPUT_MSG,A1
+00001ABA  303C 000E               1154      MOVE    #14,D0
+00001ABE  4E4F                    1155      TRAP    #15
+00001AC0  4E75                    1156      RTS
+00001AC2                          1157      
+00001AC2                          1158  GAME_LEVEL_20:
+00001AC2  43F9 00003805           1159      LEA     GAME_LEVEL_20_MSG,A1
+00001AC8  303C 000E               1160      MOVE    #14,D0
+00001ACC  4E4F                    1161      TRAP    #15
+00001ACE                          1162      
+00001ACE  43F9 000040B6           1163      LEA     GAME_LEVEL_20_INPUT_MSG,A1
+00001AD4                          1164      
+00001AD4  303C 0002               1165      MOVE    #2,D0
+00001AD8  4E4F                    1166      TRAP    #15
+00001ADA                          1167      
+00001ADA                          1168      
+00001ADA  4DF9 0000382A           1169      LEA     GAME_LEVEL_20_KEY,A6
+00001AE0                          1170      
+00001AE0  1011                    1171      MOVE.B  (A1),D0
+00001AE2  B016                    1172      CMP.B   (A6),D0
+00001AE4                          1173      
+00001AE4  6600 000C               1174      BNE     .NO_GAME_LEVEL_20
+00001AE8  33FC 0000 00002558      1175      MOVE.W  #0,ATTEMPTS
+00001AF0  4E75                    1176      RTS
+00001AF2                          1177      
+00001AF2                          1178  .NO_GAME_LEVEL_20:
+00001AF2  6100 F75C               1179      BSR COMPARISON_PART
+00001AF6                          1180      
+00001AF6  43F9 00003F48           1181      LEA     NO_GAME_LEVEL_20_MSG,A1
+00001AFC  303C 000E               1182      MOVE    #14,D0
+00001B00  4E4F                    1183      TRAP    #15
+00001B02                          1184      
+00001B02  3239 00002558           1185      MOVE.W  ATTEMPTS,D1
+00001B08  103C 0003               1186      MOVE.B  #3,D0
+00001B0C  4E4F                    1187      TRAP    #15
+00001B0E                          1188      
+00001B0E  6100 F910               1189      BSR NEXT_LINE
+00001B12                          1190  
+00001B12  60AE                    1191      BRA GAME_LEVEL_20
+00001B14                          1192      
+00001B14                          1193  
+00001B14                          1194      
+00001B14                          1195  GAME_LEVEL_21:
+00001B14  43F9 0000383A           1196      LEA     GAME_LEVEL_21_MSG,A1
+00001B1A  303C 000E               1197      MOVE    #14,D0
+00001B1E  4E4F                    1198      TRAP    #15
+00001B20                          1199      
+00001B20  43F9 000040BA           1200      LEA     GAME_LEVEL_21_INPUT_MSG,A1
+00001B26                          1201      
+00001B26  303C 0002               1202      MOVE    #2,D0
+00001B2A  4E4F                    1203      TRAP    #15
+00001B2C                          1204      
+00001B2C                          1205      
+00001B2C  4DF9 000038FE           1206      LEA     GAME_LEVEL_21_KEY,A6
+00001B32                          1207      
+00001B32  1011                    1208      MOVE.B  (A1),D0
+00001B34  B016                    1209      CMP.B   (A6),D0
+00001B36                          1210      
+00001B36  6600 000C               1211      BNE     .NO_GAME_LEVEL_21
+00001B3A  33FC 0000 00002558      1212      MOVE.W  #0,ATTEMPTS
+00001B42  4E75                    1213      RTS
+00001B44                          1214      
+00001B44                          1215  .NO_GAME_LEVEL_21:
+00001B44  6100 F70A               1216      BSR COMPARISON_PART
+00001B48                          1217      
+00001B48  43F9 00003F75           1218      LEA     NO_GAME_LEVEL_21_MSG,A1
+00001B4E  303C 000E               1219      MOVE    #14,D0
+00001B52  4E4F                    1220      TRAP    #15
+00001B54                          1221      
+00001B54  3239 00002558           1222      MOVE.W  ATTEMPTS,D1
+00001B5A  103C 0003               1223      MOVE.B  #3,D0
+00001B5E  4E4F                    1224      TRAP    #15
+00001B60                          1225      
+00001B60  6100 F8BE               1226      BSR NEXT_LINE
+00001B64                          1227  
+00001B64  60AE                    1228      BRA GAME_LEVEL_21
+00001B66                          1229      
+00001B66                          1230  GAME_LEVEL_21_OUTPUT:
+00001B66                          1231      ;ADD.W   #15, BALANCE
+00001B66  43F9 0000385F           1232      LEA     GAME_LEVEL_21_OUTPUT_MSG,A1
+00001B6C  303C 000E               1233      MOVE    #14,D0
+00001B70  4E4F                    1234      TRAP    #15
+00001B72  4E75                    1235      RTS
+00001B74                          1236      
+00001B74                          1237  GAME_LEVEL_22:
+00001B74  43F9 00003901           1238      LEA     GAME_LEVEL_22_MSG,A1
+00001B7A  303C 000E               1239      MOVE    #14,D0
+00001B7E  4E4F                    1240      TRAP    #15
+00001B80                          1241      
+00001B80  43F9 000040BE           1242      LEA     GAME_LEVEL_22_INPUT_MSG,A1
+00001B86                          1243      
+00001B86  303C 0002               1244      MOVE    #2,D0
+00001B8A  4E4F                    1245      TRAP    #15
+00001B8C                          1246      
+00001B8C                          1247      
+00001B8C  4DF9 00003986           1248      LEA     GAME_LEVEL_22_KEY,A6
+00001B92                          1249      
+00001B92  1011                    1250      MOVE.B  (A1),D0
+00001B94  B016                    1251      CMP.B   (A6),D0
+00001B96                          1252      
+00001B96  6600 000C               1253      BNE     .NO_GAME_LEVEL_22
+00001B9A  33FC 0000 00002558      1254      MOVE.W  #0,ATTEMPTS
+00001BA2  4E75                    1255      RTS
+00001BA4                          1256      
+00001BA4                          1257  .NO_GAME_LEVEL_22:
+00001BA4  6100 F6AA               1258      BSR COMPARISON_PART
+00001BA8                          1259      
+00001BA8  43F9 00003FA7           1260      LEA     NO_GAME_LEVEL_22_MSG,A1
+00001BAE  303C 000E               1261      MOVE    #14,D0
+00001BB2  4E4F                    1262      TRAP    #15
+00001BB4                          1263      
+00001BB4  3239 00002558           1264      MOVE.W  ATTEMPTS,D1
+00001BBA  103C 0003               1265      MOVE.B  #3,D0
+00001BBE  4E4F                    1266      TRAP    #15
+00001BC0                          1267      
+00001BC0  6100 F85E               1268      BSR NEXT_LINE
+00001BC4                          1269  
+00001BC4  60AE                    1270      BRA GAME_LEVEL_22
+00001BC6                          1271      
+00001BC6                          1272  GAME_LEVEL_22_OUTPUT:
+00001BC6  0679 000F 00003AC6      1273      ADD.W   #15, BALANCE
+00001BCE  43F9 00003926           1274      LEA     GAME_LEVEL_22_OUTPUT_MSG,A1
+00001BD4  303C 000E               1275      MOVE    #14,D0
+00001BD8  4E4F                    1276      TRAP    #15
+00001BDA  4E75                    1277      RTS
+00001BDC                          1278      
+00001BDC                          1279  GAME_LEVEL_23:
+00001BDC  43F9 0000399B           1280      LEA     GAME_LEVEL_23_MSG,A1
+00001BE2  303C 000E               1281      MOVE    #14,D0
+00001BE6  4E4F                    1282      TRAP    #15
+00001BE8                          1283      
+00001BE8  43F9 000040C2           1284      LEA     GAME_LEVEL_23_INPUT_MSG,A1
+00001BEE                          1285      
+00001BEE  303C 0002               1286      MOVE    #2,D0
+00001BF2  4E4F                    1287      TRAP    #15
+00001BF4                          1288      
+00001BF4                          1289      
+00001BF4  4DF9 00003A24           1290      LEA     GAME_LEVEL_23_KEY,A6
+00001BFA                          1291      
+00001BFA  1011                    1292      MOVE.B  (A1),D0
+00001BFC  B016                    1293      CMP.B   (A6),D0
+00001BFE                          1294      
+00001BFE  6600 000C               1295      BNE     .NO_GAME_LEVEL_23
+00001C02  33FC 0000 00002558      1296      MOVE.W  #0,ATTEMPTS
+00001C0A  4E75                    1297      RTS
+00001C0C                          1298      
+00001C0C                          1299  .NO_GAME_LEVEL_23:
+00001C0C  6100 F642               1300      BSR COMPARISON_PART
+00001C10                          1301      
+00001C10  43F9 00003FD6           1302      LEA     NO_GAME_LEVEL_23_MSG,A1
+00001C16  303C 000E               1303      MOVE    #14,D0
+00001C1A  4E4F                    1304      TRAP    #15
+00001C1C                          1305      
+00001C1C  3239 00002558           1306      MOVE.W  ATTEMPTS,D1
+00001C22  103C 0003               1307      MOVE.B  #3,D0
+00001C26  4E4F                    1308      TRAP    #15
+00001C28                          1309      
+00001C28  6100 F7F6               1310      BSR NEXT_LINE
+00001C2C                          1311  
+00001C2C  60AE                    1312      BRA GAME_LEVEL_23
+00001C2E                          1313      
+00001C2E                          1314  GAME_LEVEL_23_OUTPUT:
+00001C2E                          1315      ;ADD.W   #15, BALANCE
+00001C2E  43F9 000039C0           1316      LEA     GAME_LEVEL_23_OUTPUT_MSG,A1
+00001C34  303C 000E               1317      MOVE    #14,D0
+00001C38  4E4F                    1318      TRAP    #15
+00001C3A  4E75                    1319      RTS
+00001C3C                          1320      
+00001C3C                          1321  GAME_LEVEL_24:
+00001C3C                          1322  
+00001C3C  303C 0002               1323      MOVE    #2,D0
+00001C40  4E4F                    1324      TRAP    #15
+00001C42                          1325      
+00001C42                          1326      
+00001C42  4DF9 00003A81           1327      LEA     GAME_LEVEL_24_KEY,A6
+00001C48                          1328      
+00001C48  1011                    1329      MOVE.B  (A1),D0
+00001C4A  B016                    1330      CMP.B   (A6),D0
+00001C4C                          1331      
+00001C4C                          1332      ;MOVE.L  (A1),D0
+00001C4C                          1333      ;CMP.L   (A6),D0
+00001C4C                          1334      
+00001C4C  6600 0018               1335      BNE .NO_GAME_LEVEL_24
+00001C50                          1336  
+00001C50  43F9 00003A3F           1337      LEA     GAME_LEVEL_24_MSG,A1
+00001C56  303C 000E               1338      MOVE    #14,D0
+00001C5A  4E4F                    1339      TRAP    #15
+00001C5C                          1340      
+00001C5C                          1341      ;LEA     GAME_LEVEL_24_INPUT_MSG,A1
+00001C5C                          1342      
+00001C5C                          1343      ;MOVE    #2,D0
+00001C5C                          1344      ;TRAP    #15
+00001C5C                          1345      
+00001C5C                          1346      
+00001C5C                          1347      ;LEA     GAME_LEVEL_24_KEY,A6
+00001C5C                          1348      
+00001C5C                          1349      ;MOVE.B  (A1),D0
+00001C5C                          1350      ;CMP.B   (A6),D0
+00001C5C                          1351      
+00001C5C                          1352      ;BNE     .NO_GAME_LEVEL_24
+00001C5C  33FC 0000 00002558      1353      MOVE.W  #0,ATTEMPTS
+00001C64  4E75                    1354      RTS
+00001C66                          1355      
+00001C66                          1356  .NO_GAME_LEVEL_24:
+00001C66  6100 F5E8               1357      BSR COMPARISON_PART
+00001C6A                          1358      
+00001C6A  43F9 0000400A           1359      LEA     NO_GAME_LEVEL_24_MSG,A1
+00001C70  303C 000E               1360      MOVE    #14,D0
+00001C74  4E4F                    1361      TRAP    #15
+00001C76                          1362      
+00001C76  3239 00002558           1363      MOVE.W  ATTEMPTS,D1
+00001C7C  103C 0003               1364      MOVE.B  #3,D0
+00001C80  4E4F                    1365      TRAP    #15
+00001C82                          1366      
+00001C82  6100 F79C               1367      BSR NEXT_LINE
+00001C86                          1368  
+00001C86  60B4                    1369      BRA GAME_LEVEL_24
+00001C88                          1370      
+00001C88                          1371  
+00001C88                          1372      
+00001C88                          1373  GAME_LEVEL_25:
+00001C88  43F9 00003A84           1374      LEA     GAME_LEVEL_25_MSG,A1
+00001C8E  303C 000E               1375      MOVE    #14,D0
+00001C92  4E4F                    1376      TRAP    #15
+00001C94                          1377      
+00001C94  43F9 000040CA           1378      LEA     GAME_LEVEL_25_INPUT_MSG,A1
+00001C9A                          1379      
+00001C9A  303C 0002               1380      MOVE    #2,D0
+00001C9E  4E4F                    1381      TRAP    #15
+00001CA0                          1382      
+00001CA0                          1383      
+00001CA0  4DF9 00003AA9           1384      LEA     GAME_LEVEL_25_KEY,A6
+00001CA6                          1385      
+00001CA6  1011                    1386      MOVE.B  (A1),D0
+00001CA8  B016                    1387      CMP.B   (A6),D0
+00001CAA                          1388      
+00001CAA  6600 000E               1389      BNE     .NO_GAME_LEVEL_25
+00001CAE  33FC 0000 00002558      1390      MOVE.W  #0,ATTEMPTS
+00001CB6  6000 F6C8               1391      BRA     NO_CHOICE_1
+00001CBA                          1392      
+00001CBA                          1393  .NO_GAME_LEVEL_25:
+00001CBA  6100 F594               1394      BSR COMPARISON_PART
+00001CBE                          1395      
+00001CBE  43F9 00004032           1396      LEA     NO_GAME_LEVEL_25_MSG,A1
+00001CC4  303C 000E               1397      MOVE    #14,D0
+00001CC8  4E4F                    1398      TRAP    #15
+00001CCA                          1399      
+00001CCA  3239 00002558           1400      MOVE.W  ATTEMPTS,D1
+00001CD0  103C 0003               1401      MOVE.B  #3,D0
+00001CD4  4E4F                    1402      TRAP    #15
+00001CD6                          1403      
+00001CD6  6100 F748               1404      BSR NEXT_LINE
+00001CDA                          1405  
+00001CDA  60AC                    1406      BRA GAME_LEVEL_25
+00001CDC                          1407      
+00001CDC                          1408      
+00001CDC                          1409  
+00001CDC                          1410      
+00001CDC                          1411  
+00001CDC                          1412      
+00001CDC                          1413  
+00001CDC                          1414      
+00001CDC                          1415  
+00001CDC                          1416     
+00001CDC                          1417      
+00001CDC                          1418  GAME_OVER:
+00001CDC  6100 F4AE               1419      BSR CLEAR_SCREEN
+00001CE0  43F9 000027BE           1420      LEA     GAME_OVER_MSG,A1
+00001CE6  303C 000E               1421      MOVE    #14,D0
+00001CEA  4E4F                    1422      TRAP    #15
+00001CEC  6100 0002               1423      BSR END       
+00001CF0                          1424  
+00001CF0                          1425  END:
+00001CF0  FFFF FFFF               1426      SIMHALT  
+00001CF4                          1427      
+00001CF4                          1428  
+00001CF4                          1429  * Put program code here
+00001CF4                          1430  WELCOME_MSG:
+00001CF4= 20 20 20 20 20 2E ...   1431      DC.B '     .;;;;;MM;         .\,.mmSSSm,,/,      ,SSSMM;;;                 ',$0D,$0A
+00001D3B= 20 20 20 3B 3B 3B ...   1432      DC.B '   ;;;;;;mMM;        .;MMmSSSSSSSmMm;     ;MSSMM;;;;                 ',$0D,$0A
+00001D82= 20 20 3B 3B 3B 3B ...   1433      DC.B '  ;;;;;;mMSM;     ,_ ;MMmS;;;;;;mmmM;  -,;MMMMMMm;;;;                ',$0D,$0A
+00001DC9= 20 3B 3B 3B 3B 3B ...   1434      DC.B ' ;;;;;;;;MMSMM;     \"*;M;( ( '') );m;*"/ ;MMMMMM;;;;;,              ',$0D,$0A
+00001E0F= 2E 3B 3B 3B 3B 3B ...   1435      DC.B '.;;;;;;mMMSMM;      \(@;!G%     $H!;@)/ ;MMMMMMMM;;;;;,              ',$0D,$0A
+00001E56= 20 3B 3B 3B 3B 3B ...   1436      DC.B ' ;;;;;;;MMSSSM;       ;,;.*o*&gt;H&lt;*o*.;m; ;MMMMMMMMM;            ',$0D,$0A
+00001E9D= 2E 3B 3B 3B 3B 3B ...   1437      DC.B '.;;;;;;;MMSSSMM;     ;Mm;           ;M;,MMMMMMMMMMm;;;;;;.           ',$0D,$0A
+00001EE4= 3B 3B 3B 3B 3B 3B ...   1438      DC.B ';;;;;;;mmMSSSMMMM,   ;Mm;,    -    ,;M;MMMMMMMSMMMMm;;;;;;;          ',$0D,$0A
+00001F2B= 3B 3B 3B 3B 3B 3B ...   1439      DC.B ';;;;;;;MMMSSSMMMMMMMm;Mm;;,  ___  ,;SmM;MMMMMMSSMMMM;;;;;;;;         ',$0D,$0A
+00001F72= 3B 3B 25 22 3B 3B ...   1440      DC.B ';;%";;;MMMSSSSMMMMMM;MMmS;;,  "  ,;SmMM;MMMMMMSSMMMM;;;;;;;;.        ',$0D,$0A
+00001FB9= 21 3B 3B 3B 3B 3B ...   1441      DC.B '!;;;;;MMMSSSSSMMMMM;MMMmSS;;._.;;SSmMM;MMMMMMSSMMMM;;;;;;;;;         ',$0D,$0A
+00002000= 20 3B 3B 3B 3B 3B ...   1442      DC.B ' ;;;;;; ;,SSSM;m.mm!    \.   `.   /  ;MMMM `qSSS    ;;;;;;;          ',$0D,$0A    
+00002047= 20 20 20 3B 3B 60 ...   1443      DC.B '   ;;`;;.        mS;;`;  ;     ;    ;M,!     S  fk    ;;;;;          ',$0D,$0A 
+0000208E= 20 20 20 20 3B 3B ...   1444      DC.B '    ;;;;;       .mS;;, ; ;. x  ;  X  MM;                ;;;;         ',$0D,$0A 
+000020D5= 20 20 20 20 20 3B ...   1445      DC.B '     ;;;;;      MMmS;; `, ;._.; -_.MMM;                 ;;;;         ',$0D,$0A 
+0000211C= 20 20 20 20 20 20 ...   1446      DC.B '      '';       MMmS;;; ;   ;      ;  MM;                ;;;;        ',$0D,$0A  
+00002162= 20 20 20 20 20 20 ...   1447      DC.B '       ;               |. ;  ; (. ;  ;      _.-.         ;;          ',$0D,$0A 
+000021A9= 20 20 20 20 20 20 ...   1448      DC.B '          .-----..__  /   ;  ;   ;; ;\  _.-" .- `.      ;;           ',$0D,$0A 
+000021F0= 20 20 20 20 20 20 ...   1449      DC.B '        ;. ___      `*;   `; ;;  ;  ; ;@  .-&    :      ;            ',$0D,$0A 
+00002237= 20 20 20 20 20 20 ...   1450      DC.B '        ;     """*-.   `.  ;  ;  ;  ; ; ,;      /       |            ',$0D,$0A 
+0000227E= 20 20 20 20 20 20 ...   1451      DC.B '        &,          `-_    (.--;,`--;..*      .%        &            ',$0D,$0A 
+000022C5= 20 20 20 20 20 20 ...   1452      DC.B '          `-_          `*-._*&.\\\;||\\)     ,"                      ',$0D,$0A 
+0000230C= 20 20 20 20 20 20 ...   1453      DC.B '             `"*-._        "*`-ll_ll*l    ,*                         ',$0D,$0A 
+00002353= 20 20 20 20 20 20 ...   1454      DC.B '                ,==;*-._           "-.  .J                           ',$0D,$0A 
+0000239A= 20 20 20 20 20 20 ...   1455      DC.B '             _-^    "*-=`*;-._        ;H                             ',$0D,$0A 
+000023E1= 20 20 20 20 20 20 ...   1456      DC.B '           ."            ;;  ;"*-.    `                              ',$0D,$0A 
+00002428= 20 20 20 20 20 20 ...   1457      DC.B '           ;   ____      ;//;     "-   `,                            ',$0D,$0A 
+0000246F= 20 20 20 20 20 20 ...   1458      DC.B '           `+   .-/                 ".\\;                            ',$0D,$0A 
+000024B6= 20 20 20 20 20 20 ...   1459      DC.B '             `*" /                    ";                             ',$0D,$0A 
+000024FD                          1460  
+000024FD= 0D 0A 00                1461      DC.B    $0D,$0A,0
+00002500                          1462  
+00002500                          1463  START_MSG:
+00002500= 0D 0A                   1464      DC.B    $0D,$0A 
+00002502= 50 72 65 73 73 20 ...   1465      DC.B    'Press ''1'' to start the game:'
+0000251E= 0D 0A 00                1466      DC.B    $0D,$0A,0
+00002521= FF                      1467      DC.B    $ff ; garbage
+00002522                          1468  USER_MSG:
+00002522= 0D 0A                   1469      DC.B    $0D,$0A 
+00002524= 55 73 65 72 6E 61 ...   1470      DC.B    'Username:'
+0000252D= 0D 0A 00                1471      DC.B    $0D,$0A,0 
+00002530                          1472  
+00002530                          1473  NO_USER_MSG:
+00002530= 0D 0A                   1474      DC.B    $0D,$0A   
+00002532= 48 49 4E 54 3A 20 ...   1475      DC.B    'HINT: cer??r',$0D,$0A 
+00002540= 0D 0A                   1476      DC.B    $0D,$0A 
+00002542= 41 54 54 45 4D 50 ...   1477      DC.B    'ATTEMPTS: ',0
+0000254D= 0D 0A 00                1478      DC.B    $0D,$0A,0 
+00002550                          1479  USER_KEY:
+00002550= 63 65 72 62 65 72 00    1480      DC.B    'cerber',0
+00002557                          1481      
+00002558= 0000                    1482  ATTEMPTS    DC.W    0
+0000255A                          1483  
+0000255A                          1484  NO_PASSWORD_MSG:
+0000255A= 0D 0A                   1485      DC.B    $0D,$0A   
+0000255C= 48 49 4E 54 3A 20 ...   1486      DC.B    'HINT: THE MOST POPULAR PASSWORD',$0D,$0A 
+0000257D= 0D 0A                   1487      DC.B    $0D,$0A 
+0000257F= 41 54 54 45 4D 50 ...   1488      DC.B    'ATTEMPTS: ',0
+0000258A= 0D 0A 00                1489      DC.B    $0D,$0A,0
+0000258D                          1490  
+0000258D                          1491  
+0000258D                          1492  
+0000258D                          1493  
+0000258D                          1494  PASSWORD_MSG:
+0000258D= 0D 0A                   1495      DC.B    $0D,$0A 
+0000258F= 50 61 73 73 77 6F ...   1496      DC.B    'Password:'
+00002598= 0D 0A 00                1497      DC.B    $0D,$0A,0 
+0000259B                          1498      
+0000259B                          1499      
+0000259B                          1500  GAME_STATS_MSG:
+0000259B= 0D 0A                   1501      DC.B    $0D,$0A  
+0000259D= 42 61 6C 61 6E 63 ...   1502      DC.B    'Balance ($): ',0
+000025AB                          1503  BEGINNING_MSG:
+000025AB= 0D 0A                   1504      DC.B    $0D,$0A
+000025AD= 41 72 65 20 79 6F ...   1505      DC.B    'Are you sure you want to download the file named ''asmproject.X68''?'
+000025EF= 0D 0A                   1506      DC.B    $0D,$0A
+000025F1= 50 72 65 73 73 20 ...   1507      DC.B    'Press (Y/N):',0  
+000025FE                          1508      
+000025FE                          1509  WARNING_MSG_1:
+000025FE= 0D 0A                   1510      DC.B    $0D,$0A 
+00002600= 43 45 52 42 45 52 ...   1511      DC.B    'CERBER RANSOMWARE',0
+00002612                          1512      
+00002612                          1513  PRESS_ENTER_MSG:
+00002612= 0D 0A                   1514      DC.B    $0D,$0A
+00002614= 50 72 65 73 73 20 ...   1515      DC.B    'Press ''Enter'':',0
+00002623                          1516          
+00002623                          1517  WARNING_MSG_2:
+00002623= 0D 0A                   1518      DC.B    $0D,$0A 
+00002625= 41 4C 4C 20 46 49 ...   1519      DC.B    'ALL FILES HAVE BEEN ENCRYPTED!',0
+00002644                          1520      
+00002644                          1521  WARNING_MSG_3:
+00002644= 0D 0A                   1522      DC.B    $0D,$0A
+00002646= 52 45 43 45 49 56 ...   1523      DC.B    'RECEIVE THE ONLY PRIVATE KEY AND DECRYPTION PROGRAM',0
+0000267A                          1524  WARNING_MSG_4:
+0000267A= 0D 0A                   1525      DC.B    $0D,$0A
+0000267C= 54 4F 20 52 45 43 ...   1526      DC.B    'TO RECEIVE THE PRIVATE KEY AND DECRYPTION PROGRAM:',0
+000026AF                          1527  WARNING_MSG_5:
+000026AF= 0D 0A                   1528      DC.B    $0D,$0A
+000026B1= 31 2E 47 4F 20 54 ...   1529      DC.B    '1.GO TO ANY DECRYPTED FOLDER',0
+000026CE                          1530  WARNING_MSG_6:
+000026CE= 0D 0A                   1531      DC.B    $0D,$0A
+000026D0= 32 2E 4F 50 45 4E ...   1532      DC.B    '2.OPEN FILE ''READTHIS.txt''' ,0
+000026EB                          1533  WARNING_MSG_7:
+000026EB= 0D 0A                   1534      DC.B    $0D,$0A
+000026ED= 33 2E 46 4F 4C 4C ...   1535      DC.B    '3.FOLLOW THE INSTRUCTIONS' ,0
+00002707                          1536  WARNING_MSG_8:
+00002707= 0D 0A                   1537      DC.B    $0D,$0A
+00002709= 4F 52 20 31 30 42 ...   1538      DC.B    'OR 10BTC, ALL INSTRUCTIONS WILL BE PROVIDED.' ,0
+00002736                          1539      
+00002736                          1540  CHOICE_1_MSG:
+00002736= 0D 0A                   1541      DC.B    $0D,$0A
+00002738= 43 68 6F 6F 73 65 ...   1542      DC.B    'Choose 1.Try to find the private key'
+0000275C= 0D 0A                   1543      DC.B    $0D,$0A
+0000275E= 43 68 6F 6F 73 65 ...   1544      DC.B    'Choose 2.Transfer 10BTC:',0
+00002777                          1545      
+00002777                          1546  NO_CHOICE_1_MSG:
+00002777= 0D 0A                   1547      DC.B    $0D,$0A
+00002779= 41 6D 6F 75 6E 74 ...   1548      DC.B    'Amount: 10BTC'
+00002786= 0D 0A                   1549      DC.B    $0D,$0A
+00002788= 49 42 41 4E 3A 20 ...   1550      DC.B    'IBAN: IE65BOFI900017257357'
+000027A2= 0D 0A                   1551      DC.B    $0D,$0A
+000027A4= 42 61 6C 61 6E 63 ...   1552      DC.B    'Balance ($):',0
+000027B1                          1553      
+000027B1                          1554  NO_CHOICE_1_MSG_CONT:
+000027B1= 0D 0A                   1555      DC.B    $0D,$0A
+000027B3= 50 72 65 73 73 20 ...   1556      DC.B    'Press (Y):',0
+000027BE                          1557      
+000027BE                          1558  GAME_OVER_MSG:    
+000027BE= 20 20 20 20 20 20 ...   1559      DC.B '                     _,.-------------.._              ',$0D,$0A
+000027F6= 20 20 20 20 20 20 ...   1560      DC.B '                  ,-/        j          `-.           ',$0D,$0A
+0000282E= 20 20 20 20 20 20 ...   1561      DC.B '                ,.        .-.               `.        ',$0D,$0A
+00002866= 20 20 20 20 20 20 ...   1562      DC.B '               /          |                   .       ',$0D,$0A
+0000289E= 20 20 20 20 20 20 ...   1563      DC.B '              /         ,-|                    `      ',$0D,$0A
+000028D6= 20 20 20 20 20 20 ...   1564      DC.B '             .         j                         \    ',$0D,$0A
+0000290E= 20 20 20 20 20 20 ...   1565      DC.B '            .          |                          \   ',$0D,$0A
+00002946= 20 20 20 20 20 20 ...   1566      DC.B '            : ._       |   _....._                 .  ',$0D,$0A
+0000297E= 20 20 20 20 20 20 ...   1567      DC.B '            |   -.     L-?>       `.               :  ',$0D,$0A
+000029B6= 20 20 20 20 20 20 ...   1568      DC.B '            | `.  \  ..             `.             |  ',$0D,$0A
+000029EE= 20 20 20 20 20 20 ...   1569      DC.B '           /.\  `, Yy                 :           ,|  ',$0D,$0A
+00002A26= 20 20 20 20 20 20 ...   1570      DC.B '          /.  :  | \                  |         ,, |  ',$0D,$0A
+00002A5E= 20 20 20 20 20 20 ...   1571      DC.B '         \.    " :  `\                |      ,--   |  ',$0D,$0A
+00002A96= 20 20 20 20 20 20 ...   1572      DC.B '          \    .:     .-..___,..      |    _/      :  ',$0D,$0A
+00002ACE= 20 20 20 20 20 20 ...   1573      DC.B '           \  `.      ___   ...._     .-../        :  ',$0D,$0A
+00002B06= 20 20 20 20 20 20 ...   1574      DC.B '         .--    \    /| \_/ | | |      ,,         /   ',$0D,$0A
+00002B3E= 20 20 20 20 20 20 ...   1575      DC.B '         |       `--- |    || |||     /         ./    ',$0D,$0A
+00002B76= 20 20 20 20 20 20 ...   1576      DC.B '         |            |      /. |    /       _,/      ',$0D,$0A
+00002BAE= 20 20 20 20 20 20 ...   1577      DC.B '         |-.-.....__..|     Y-dp`...:...-..-/         ',$0D,$0A
+00002BE6= 20 20 20 20 20 20 ...   1578      DC.B '         |_|_|_L.L.T._/     |                         ',$0D,$0A
+00002C1E= 20 20 20 20 20 20 ...   1579      DC.B '         \_|_|_L.T-''/      |                         ',$0D,$0A
+00002C55= 20 20 20 20 20 20 ...   1580      DC.B '          |                /                          ',$0D,$0A
+00002C8D= 20 20 20 20 20 20 ...   1581      DC.B '         /             _.--                           ',$0D,$0A
+00002CC5= 20 20 20 20 20 20 ...   1582      DC.B '         :         _..|                               ',$0D,$0A
+00002CFD= 20 20 20 20 20 20 ...   1583      DC.B '         \__...--''                                   ',$0D,$0A
+00002D34= 0D 0A 00                1584      DC.B            $0D,$0A,0
+00002D37                          1585      
+00002D37                          1586  GAME_LEVEL_2_MSG:
+00002D37= 63 65 72 62 65 72 ...   1587      DC.B 'cerber@ubuntuserver:~$ ',0
+00002D4F= FF                      1588      DC.B    $ff ; garbage
+00002D50                          1589      
+00002D50                          1590  NEXT_LINE_MSG:
+00002D50= 0D 0A 00                1591      DC.B            $0D,$0A,0
+00002D53                          1592      
+00002D53                          1593  GAME_LEVEL_2_KEY:
+00002D53= 6C 73 00                1594      DC.B    'ls',0
+00002D56                          1595      
+00002D56                          1596  GAME_LEVEL_2_OUTPUT_MSG:
+00002D56= 0D 0A                   1597      DC.B    $0D,$0A
+00002D58= 2E 63 61 63 68 65 ...   1598      DC.B '.cache/       Documents/      .ssh/         .config/',$0D,$0A
+00002D8E= 2E 6C 6F 63 61 6C ...   1599      DC.B '.local/       Public/         Downloads/    Music/',$0D,$0A
+00002DC2                          1600      ;DC.B '',$0D,$0A
+00002DC2                          1601      ;DC.B '+-- /usr',$0D,$0A
+00002DC2                          1602      ;DC.B '    +-- /usr/bin',$0D,$0A
+00002DC2                          1603     ; DC.B '    +-- /usr/include',$0D,$0A
+00002DC2                          1604      ;DC.B '    +-- /usr/lib',$0D,$0A
+00002DC2                          1605      ;DC.B '    +-- /usr/local',$0D,$0A
+00002DC2= 56 69 64 65 6F 73 ...   1606      DC.B 'Videos/       snap/',$0D,$0A
+00002DD7= 0D 0A 00                1607      DC.B            $0D,$0A,0
+00002DDA                          1608      
+00002DDA                          1609  GAME_LEVEL_1_MSG:
+00002DDA= 63 65 72 62 65 72 ...   1610      DC.B 'cerber@ubuntuserver:~$ ',0
+00002DF2= FF                      1611      DC.B    $ff ; garbage
+00002DF3                          1612      
+00002DF3                          1613  GAME_LEVEL_1_OUTPUT_MSG:
+00002DF3= 2F 68 6F 6D 65 2F ...   1614      DC.B '/home/cerber',$0D,$0A
+00002E01= 0D 0A 00                1615      DC.B            $0D,$0A,0
+00002E04                          1616      
+00002E04                          1617  GAME_LEVEL_1_KEY:
+00002E04= 70 77 64 00             1618      DC.B    'pwd',0
+00002E08                          1619      
+00002E08                          1620  GAME_LEVEL_3_MSG:
+00002E08= 0D 0A                   1621      DC.B    $0D,$0A
+00002E0A= 63 65 72 62 65 72 ...   1622      DC.B 'cerber@ubuntuserver:~$ ',0
+00002E22= FF                      1623      DC.B    $ff ; garbage
+00002E23                          1624      
+00002E23                          1625  GAME_LEVEL_3_OUTPUT_MSG:
+00002E23= 0D 0A 00                1626      DC.B            $0D,$0A,0
+00002E26                          1627      
+00002E26                          1628  GAME_LEVEL_3_KEY:
+00002E26= 63 64 20 44 6F 77 ...   1629      DC.B    'cd Downloads',0
+00002E33                          1630      
+00002E33                          1631  GAME_LEVEL_4_MSG:
+00002E33= 0D 0A                   1632      DC.B    $0D,$0A
+00002E35= 63 65 72 62 65 72 ...   1633      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00002E57= FF                      1634      DC.B    $ff ; garbage
+00002E58                          1635      
+00002E58                          1636  GAME_LEVEL_4_OUTPUT_MSG:
+00002E58= 0D 0A                   1637      DC.B    $0D,$0A
+00002E5A= 62 75 72 70 73 75 ...   1638      DC.B 'burpsulte_free_linux_v1_7_15.sh        rocket-history.txt      iamthekey.txt',$0D,$0A
+00002EA8= 64 6F 6E 74 64 65 ...   1639      DC.B 'dontdeleteme.txt                       examples.txt            READTHIS.txt',$0D,$0A
+00002EF5                          1640      ;DC.B '',$0D,$0A
+00002EF5                          1641      ;DC.B '+-- /usr',$0D,$0A
+00002EF5                          1642      ;DC.B '    +-- /usr/bin',$0D,$0A
+00002EF5                          1643     ; DC.B '    +-- /usr/include',$0D,$0A
+00002EF5                          1644      ;DC.B '    +-- /usr/lib',$0D,$0A
+00002EF5                          1645      ;DC.B '    +-- /usr/local',$0D,$0A
+00002EF5= 0D 0A 00                1646      DC.B            $0D,$0A,0
+00002EF8                          1647      
+00002EF8                          1648  GAME_LEVEL_4_KEY:
+00002EF8= 6C 73 00                1649      DC.B    'ls',0
+00002EFB                          1650      
+00002EFB                          1651  GAME_LEVEL_5_MSG:
+00002EFB= 0D 0A                   1652      DC.B    $0D,$0A
+00002EFD= 63 65 72 62 65 72 ...   1653      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00002F1F= FF                      1654      DC.B    $ff ; garbage
+00002F20                          1655      
+00002F20                          1656  GAME_LEVEL_5_OUTPUT_MSG:
+00002F20= 0D 0A                   1657      DC.B    $0D,$0A
+00002F22= 57 49 4C 4C 20 59 ...   1658      DC.B 'WILL YOU EVER DOWNLOAD THE FILE ''asmproject.X68'' AGAIN?',$0D,$0A
+00002F5B= 31 2E 20 59 45 53 ...   1659      DC.B '1. YES    2.NO',$0D,$0A
+00002F6B= 43 68 6F 6F 73 65 ...   1660      DC.B 'Choose (1/2):',0
+00002F79                          1661      
+00002F79                          1662  GAME_LEVEL_5_KEY:
+00002F79= 63 61 74 20 69 61 ...   1663      DC.B    'cat iamthekey.txt',0
+00002F8B                          1664      
+00002F8B                          1665  GAME_LEVEL_6_MSG:
+00002F8B= 0D 0A                   1666      DC.B    $0D,$0A
+00002F8D= 31 2E 20 44 45 4C ...   1667      DC.B '1. DELETE iamthekey.txt',$0D,$0A
+00002FA6= 32 2E 20 4F 50 45 ...   1668      DC.B '2. OPEN rocket-history.txt',$0D,$0A
+00002FC2= 33 2E 20 47 45 54 ...   1669      DC.B '3. GET YOUR FIRST 15$ ',$0D,$0A
+00002FDA= 0D 0A 00                1670      DC.B  $0D,$0A,0
+00002FDD                          1671      
+00002FDD                          1672  GAME_LEVEL_7_MSG:
+00002FDD= 0D 0A                   1673      DC.B    $0D,$0A
+00002FDF= 63 65 72 62 65 72 ...   1674      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003001= FF                      1675      DC.B    $ff ; garbage
+00003002                          1676      
+00003002                          1677      
+00003002                          1678  GAME_LEVEL_7_KEY:
+00003002= 72 6D 20 69 61 6D ...   1679      DC.B    'rm iamthekey.txt',0
+00003013                          1680      
+00003013                          1681  GAME_LEVEL_8_MSG:
+00003013= 0D 0A                   1682      DC.B    $0D,$0A
+00003015= 63 65 72 62 65 72 ...   1683      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003037= FF                      1684      DC.B    $ff ; garbage
+00003038                          1685      
+00003038                          1686  GAME_LEVEL_8_OUTPUT_MSG:
+00003038= 0D 0A                   1687      DC.B    $0D,$0A
+0000303A= 62 75 72 70 73 75 ...   1688      DC.B 'burpsulte_free_linux_v1_7_15.sh       rocket-history.txt                  ',$0D,$0A
+00003086= 64 6F 6E 74 64 65 ...   1689      DC.B 'dontdeleteme.txt                      examples.txt            READTHIS.txt',$0D,$0A
+000030D2                          1690      ;DC.B '',$0D,$0A
+000030D2                          1691      ;DC.B '+-- /usr',$0D,$0A
+000030D2                          1692      ;DC.B '    +-- /usr/bin',$0D,$0A
+000030D2                          1693     ; DC.B '    +-- /usr/include',$0D,$0A
+000030D2                          1694      ;DC.B '    +-- /usr/lib',$0D,$0A
+000030D2                          1695      ;DC.B '    +-- /usr/local',$0D,$0A
+000030D2= 0D 0A 00                1696      DC.B            $0D,$0A,0
+000030D5                          1697      
+000030D5                          1698  GAME_LEVEL_8_KEY:
+000030D5= 6C 73 00                1699      DC.B    'ls',0
+000030D8                          1700      
+000030D8                          1701  GAME_LEVEL_9_MSG:
+000030D8= 0D 0A                   1702      DC.B    $0D,$0A
+000030DA= 63 65 72 62 65 72 ...   1703      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000030FC= FF                      1704      DC.B    $ff ; garbage
+000030FD                          1705      
+000030FD                          1706  GAME_LEVEL_9_OUTPUT_MSG:
+000030FD= 0D 0A                   1707      DC.B    $0D,$0A
+000030FF= 59 4F 55 52 20 42 ...   1708      DC.B 'YOUR BALANCE HAS BEEN UPDATED!',$0D,$0A
+0000311F= 48 4F 57 20 41 42 ...   1709      DC.B 'HOW ABOUT TO CLEAR YOUR SCREEN???',$0D,$0A
+00003142= 31 2E 20 43 4C 45 ...   1710      DC.B '1. CLEAR the screen',$0D,$0A
+00003157= 32 2E 20 44 45 4C ...   1711      DC.B '2. DELETE this file ',$0D,$0A
+0000316D= 33 2E 20 4F 50 45 ...   1712      DC.B '3. OPEN examples.txt ',$0D,$0A
+00003184= 34 2E 20 47 45 54 ...   1713      DC.B '4. GET another 15$',$0D,$0A
+00003198= 0D 0A 00                1714      DC.B            $0D,$0A,0
+0000319B                          1715      
+0000319B                          1716  GAME_LEVEL_9_KEY:
+0000319B= 63 61 74 20 72 6F ...   1717      DC.B    'cat rocket-history.txt',0
+000031B2                          1718      
+000031B2                          1719  GAME_LEVEL_10_MSG:
+000031B2= 0D 0A                   1720      DC.B    $0D,$0A
+000031B4= 63 65 72 62 65 72 ...   1721      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000031D6= FF                      1722      DC.B    $ff ; garbage
+000031D7                          1723      
+000031D7                          1724  GAME_LEVEL_10_OUTPUT_MSG:
+000031D7= 0D 0A                   1725      DC.B    $0D,$0A
+000031D9= 63 65 72 62 65 72 ...   1726      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000031FB= FF                      1727      DC.B    $ff ; garbage
+000031FC                          1728      
+000031FC                          1729  GAME_LEVEL_10_KEY:
+000031FC= 63 6C 65 61 72 00       1730      DC.B    'clear',0
+00003202                          1731      
+00003202                          1732  GAME_LEVEL_11_MSG:
+00003202= 0D 0A                   1733      DC.B    $0D,$0A
+00003204= 63 65 72 62 65 72 ...   1734      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003226= FF                      1735      DC.B    $ff ; garbage
+00003227                          1736      
+00003227                          1737      
+00003227                          1738  GAME_LEVEL_11_KEY:
+00003227= 72 6D 20 72 6F 63 ...   1739      DC.B    'rm rocket-history.txt',0
+0000323D                          1740      
+0000323D                          1741  GAME_LEVEL_12_MSG:
+0000323D= 0D 0A                   1742      DC.B    $0D,$0A
+0000323F= 63 65 72 62 65 72 ...   1743      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003261= FF                      1744      DC.B    $ff ; garbage
+00003262                          1745      
+00003262                          1746  GAME_LEVEL_12_OUTPUT_MSG:
+00003262= 0D 0A                   1747      DC.B    $0D,$0A
+00003264= 62 75 72 70 73 75 ...   1748      DC.B 'burpsulte_free_linux_v1_7_15.sh                                            ',$0D,$0A
+000032B1= 64 6F 6E 74 64 65 ...   1749      DC.B 'dontdeleteme.txt                      examples.txt            READTHIS.txt',$0D,$0A
+000032FD                          1750      ;DC.B '',$0D,$0A
+000032FD                          1751      ;DC.B '+-- /usr',$0D,$0A
+000032FD                          1752      ;DC.B '    +-- /usr/bin',$0D,$0A
+000032FD                          1753     ; DC.B '    +-- /usr/include',$0D,$0A
+000032FD                          1754      ;DC.B '    +-- /usr/lib',$0D,$0A
+000032FD                          1755      ;DC.B '    +-- /usr/local',$0D,$0A
+000032FD= 0D 0A 00                1756      DC.B            $0D,$0A,0
+00003300                          1757      
+00003300                          1758  GAME_LEVEL_12_KEY:
+00003300= 6C 73 00                1759      DC.B    'ls',0
+00003303                          1760      
+00003303                          1761  GAME_LEVEL_13_MSG:
+00003303= 0D 0A                   1762      DC.B    $0D,$0A
+00003305= 63 65 72 62 65 72 ...   1763      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003327= FF                      1764      DC.B    $ff ; garbage
+00003328                          1765      
+00003328                          1766  GAME_LEVEL_13_OUTPUT_MSG:
+00003328= 0D 0A                   1767      DC.B    $0D,$0A
+0000332A= 59 4F 55 52 20 42 ...   1768      DC.B 'YOUR BALANCE HAS BEEN UPDATED AGAIN!',$0D,$0A
+00003350= 45 58 45 43 55 54 ...   1769      DC.B 'EXECUTING SHELL SCRIPTS???',$0D,$0A
+0000336C= 31 2E 20 44 45 4C ...   1770      DC.B '1. DELETE this file  ',$0D,$0A
+00003383= 32 2E 20 45 58 45 ...   1771      DC.B '2. EXECUTE burpsulte_free_linux_v1_7_15.sh ',$0D,$0A
+000033B0= 0D 0A 00                1772      DC.B            $0D,$0A,0
+000033B3                          1773      
+000033B3                          1774  GAME_LEVEL_13_KEY:
+000033B3= 63 61 74 20 65 78 ...   1775      DC.B    'cat examples.txt',0
+000033C4                          1776      
+000033C4                          1777  GAME_LEVEL_14_MSG:
+000033C4= 0D 0A                   1778      DC.B    $0D,$0A
+000033C6= 63 65 72 62 65 72 ...   1779      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000033E8= FF                      1780      DC.B    $ff ; garbage
+000033E9                          1781  
+000033E9                          1782      
+000033E9                          1783  GAME_LEVEL_14_KEY:
+000033E9= 72 6D 20 65 78 61 ...   1784      DC.B    'rm examples.txt',0
+000033F9                          1785      
+000033F9                          1786  GAME_LEVEL_15_MSG:
+000033F9= 0D 0A                   1787      DC.B    $0D,$0A
+000033FB= 63 65 72 62 65 72 ...   1788      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+0000341D= FF                      1789      DC.B    $ff ; garbage
+0000341E                          1790      
+0000341E                          1791  GAME_LEVEL_15_OUTPUT_MSG:
+0000341E= 0D 0A                   1792      DC.B    $0D,$0A
+00003420= 62 75 72 70 73 75 ...   1793      DC.B 'burpsulte_free_linux_v1_7_15.sh                                            ',$0D,$0A
+0000346D= 64 6F 6E 74 64 65 ...   1794      DC.B 'dontdeleteme.txt                                               READTHIS.txt',$0D,$0A
+000034BA                          1795      ;DC.B '',$0D,$0A
+000034BA                          1796      ;DC.B '+-- /usr',$0D,$0A
+000034BA                          1797      ;DC.B '    +-- /usr/bin',$0D,$0A
+000034BA                          1798     ; DC.B '    +-- /usr/include',$0D,$0A
+000034BA                          1799      ;DC.B '    +-- /usr/lib',$0D,$0A
+000034BA                          1800      ;DC.B '    +-- /usr/local',$0D,$0A
+000034BA= 0D 0A 00                1801      DC.B            $0D,$0A,0
+000034BD                          1802      
+000034BD                          1803  GAME_LEVEL_15_KEY:
+000034BD= 6C 73 00                1804      DC.B    'ls',0
+000034C0                          1805      
+000034C0                          1806  GAME_LEVEL_16_MSG:
+000034C0= 0D 0A                   1807      DC.B    $0D,$0A
+000034C2= 63 65 72 62 65 72 ...   1808      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000034E4= FF                      1809      DC.B    $ff ; garbage
+000034E5                          1810      
+000034E5                          1811  GAME_LEVEL_16_OUTPUT_MSG:
+000034E5= 0D 0A                   1812      DC.B    $0D,$0A
+000034E7= 47 55 45 53 20 57 ...   1813      DC.B 'GUES WHAT???',$0D,$0A
+000034F5= 59 4F 55 52 20 42 ...   1814      DC.B 'YOUR BALANCE HAS BEEN UPDATED AGAIN!',$0D,$0A
+0000351B= 44 45 4C 45 54 45 ...   1815      DC.B 'DELETE THOSE FILES YOU DO NOT NEED THEM',$0D,$0A
+00003544= 31 2E 20 44 45 4C ...   1816      DC.B '1. DELETE this file',$0D,$0A
+00003559= 32 2E 20 4F 50 45 ...   1817      DC.B '2. OPEN READTHIS.txt  ',$0D,$0A
+00003571= 41 4E 44 20 41 53 ...   1818      DC.B 'AND AS YOU MAY HAVE ALREADY UNDERSTOOD...  ',$0D,$0A
+0000359E= 2E 2E 2E 41 4E 4F ...   1819      DC.B '...ANOTHER 15$ ARE WAITING FOR YOU  ',$0D,$0A
+000035C4= 0D 0A 00                1820      DC.B            $0D,$0A,0
+000035C7                          1821      
+000035C7                          1822  GAME_LEVEL_16_KEY:
+000035C7= 2E 2F 62 75 72 70 ...   1823      DC.B    './burpsulte_free_linux_v1_7_15.sh',0
+000035E9                          1824      
+000035E9                          1825  GAME_LEVEL_17_MSG:
+000035E9= 0D 0A                   1826      DC.B    $0D,$0A
+000035EB= 63 65 72 62 65 72 ...   1827      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+0000360D= FF                      1828      DC.B    $ff ; garbage
+0000360E                          1829  
+0000360E                          1830      
+0000360E                          1831  GAME_LEVEL_17_KEY:
+0000360E= 72 6D 20 62 75 72 ...   1832      DC.B    'rm burpsulte_free_linux_v1_7_15.sh',0
+00003631                          1833      
+00003631                          1834  GAME_LEVEL_18_MSG:
+00003631= 0D 0A                   1835      DC.B    $0D,$0A
+00003633= 63 65 72 62 65 72 ...   1836      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003655= FF                      1837      DC.B    $ff ; garbage
+00003656                          1838      
+00003656                          1839  GAME_LEVEL_18_OUTPUT_MSG:
+00003656= 0D 0A                   1840      DC.B    $0D,$0A
+00003658= 20 20 20 20 20 20 ...   1841      DC.B '                                                                           ',$0D,$0A
+000036A5= 64 6F 6E 74 64 65 ...   1842      DC.B 'dontdeleteme.txt                                               READTHIS.txt',$0D,$0A
+000036F2                          1843      ;DC.B '',$0D,$0A
+000036F2                          1844      ;DC.B '+-- /usr',$0D,$0A
+000036F2                          1845      ;DC.B '    +-- /usr/bin',$0D,$0A
+000036F2                          1846     ; DC.B '    +-- /usr/include',$0D,$0A
+000036F2                          1847      ;DC.B '    +-- /usr/lib',$0D,$0A
+000036F2                          1848      ;DC.B '    +-- /usr/local',$0D,$0A
+000036F2= 0D 0A 00                1849      DC.B            $0D,$0A,0
+000036F5                          1850      
+000036F5                          1851  GAME_LEVEL_18_KEY:
+000036F5= 6C 73 00                1852      DC.B    'ls',0
+000036F8                          1853      
+000036F8                          1854  GAME_LEVEL_19_MSG:
+000036F8= 0D 0A                   1855      DC.B    $0D,$0A
+000036FA= 63 65 72 62 65 72 ...   1856      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+0000371C= FF                      1857      DC.B    $ff ; garbage
+0000371D                          1858      
+0000371D                          1859  GAME_LEVEL_19_OUTPUT_MSG:
+0000371D= 0D 0A                   1860      DC.B    $0D,$0A
+0000371F= 31 35 24 20 48 41 ...   1861      DC.B '15$ HAS BEEN ADDED TO YOU BALANCE ACCOUNT!',$0D,$0A
+0000374B= 59 4F 55 20 57 49 ...   1862      DC.B 'YOU WILL UNDERSTAND WHY YOU NEED THEM VERY SOON!',$0D,$0A
+0000377D= 50 52 49 56 41 54 ...   1863      DC.B 'PRIVATE KEY:1a',$0D,$0A
+0000378D= 31 2E 20 44 45 4C ...   1864      DC.B '1. DELETE READTHIS.txt  ',$0D,$0A
+000037A7= 32 2E 20 4F 50 45 ...   1865      DC.B '2. OPEN dontdeleteme.txt  ',$0D,$0A
+000037C3= 59 45 53 53 53 20 ...   1866      DC.B 'YESSS YOU WILL GET ANOTHER 15$ YOU GOT THAT ',$0D,$0A
+000037F1= 0D 0A 00                1867      DC.B            $0D,$0A,0
+000037F4                          1868      
+000037F4                          1869  GAME_LEVEL_19_KEY:
+000037F4= 63 61 74 20 52 45 ...   1870      DC.B    'cat READTHIS.txt',0
+00003805                          1871      
+00003805                          1872  GAME_LEVEL_20_MSG:
+00003805= 0D 0A                   1873      DC.B    $0D,$0A
+00003807= 63 65 72 62 65 72 ...   1874      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003829= FF                      1875      DC.B    $ff ; garbage
+0000382A                          1876  
+0000382A                          1877      
+0000382A                          1878  GAME_LEVEL_20_KEY:
+0000382A= 72 6D 20 52 45 41 ...   1879      DC.B    'rm READTHIS.txt',0
+0000383A                          1880      
+0000383A                          1881  GAME_LEVEL_21_MSG:
+0000383A= 0D 0A                   1882      DC.B    $0D,$0A
+0000383C= 63 65 72 62 65 72 ...   1883      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+0000385E= FF                      1884      DC.B    $ff ; garbage
+0000385F                          1885      
+0000385F                          1886  GAME_LEVEL_21_OUTPUT_MSG:
+0000385F= 0D 0A                   1887      DC.B    $0D,$0A
+00003861= 20 20 20 20 20 20 ...   1888      DC.B '                                                                           ',$0D,$0A
+000038AE= 64 6F 6E 74 64 65 ...   1889      DC.B 'dontdeleteme.txt                                                           ',$0D,$0A
+000038FB                          1890      ;DC.B '',$0D,$0A
+000038FB                          1891      ;DC.B '+-- /usr',$0D,$0A
+000038FB                          1892      ;DC.B '    +-- /usr/bin',$0D,$0A
+000038FB                          1893     ; DC.B '    +-- /usr/include',$0D,$0A
+000038FB                          1894      ;DC.B '    +-- /usr/lib',$0D,$0A
+000038FB                          1895      ;DC.B '    +-- /usr/local',$0D,$0A
+000038FB= 0D 0A 00                1896      DC.B            $0D,$0A,0
+000038FE                          1897      
+000038FE                          1898  GAME_LEVEL_21_KEY:
+000038FE= 6C 73 00                1899      DC.B    'ls',0
+00003901                          1900      
+00003901                          1901  GAME_LEVEL_22_MSG:
+00003901= 0D 0A                   1902      DC.B    $0D,$0A
+00003903= 63 65 72 62 65 72 ...   1903      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003925= FF                      1904      DC.B    $ff ; garbage
+00003926                          1905      
+00003926                          1906  GAME_LEVEL_22_OUTPUT_MSG:
+00003926= 0D 0A                   1907      DC.B    $0D,$0A
+00003928= 41 4E 4F 54 48 45 ...   1908      DC.B 'ANOTHER 15$ WELL DONE',$0D,$0A
+0000393F= 31 2E 20 52 45 54 ...   1909      DC.B '1. RETRIEVE the content of the web page: ',$0D,$0A
+0000396A= 68 74 74 70 3A 2F ...   1910      DC.B 'http://asmproject.com  ',$0D,$0A
+00003983= 0D 0A 00                1911      DC.B            $0D,$0A,0
+00003986                          1912      
+00003986                          1913  GAME_LEVEL_22_KEY:
+00003986= 63 61 74 20 64 6F ...   1914      DC.B    'cat dontdeleteme.txt',0
+0000399B                          1915      
+0000399B                          1916  GAME_LEVEL_23_MSG:
+0000399B= 0D 0A                   1917      DC.B    $0D,$0A
+0000399D= 63 65 72 62 65 72 ...   1918      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+000039BF= FF                      1919      DC.B    $ff ; garbage
+000039C0                          1920      
+000039C0                          1921  GAME_LEVEL_23_OUTPUT_MSG:
+000039C0= 0D 0A                   1922      DC.B    $0D,$0A
+000039C2= 3C 21 44 4F 43 54 ...   1923      DC.B '<!DOCTYPE html>',$0D,$0A
+000039D3= 3C 68 74 6D 6C 3E ...   1924      DC.B '<html>',$0D,$0A
+000039DB= 3C 68 65 61 64 3E ...   1925      DC.B '<head>',$0D,$0A
+000039E3= 3C 74 69 74 6C 65 ...   1926      DC.B '<title>ASM PROJECT</title>',$0D,$0A
+000039FF= 3C 2F 68 65 61 64 ...   1927      DC.B '</head>',$0D,$0A
+00003A08= 3C 62 6F 64 79 3E ...   1928      DC.B '<body>',$0D,$0A
+00003A10= 3C 68 31 3E 0D 0A       1929      DC.B '<h1>',$0D,$0A
+00003A16= 50 52 49 56 41 54 ...   1930      DC.B 'PRIVATE_KEY: ',0
+00003A24                          1931  
+00003A24                          1932  GAME_LEVEL_23_KEY:
+00003A24                          1933      ;DC.B    '12345ABABA',0  
+00003A24= 63 75 72 6C 20 68 ...   1934      DC.B    'curl http://asmproject.com',0   
+00003A3F                          1935      
+00003A3F                          1936  
+00003A3F                          1937      
+00003A3F                          1938  GAME_LEVEL_24_MSG:
+00003A3F= 0D 0A                   1939      DC.B    $0D,$0A   
+00003A41= 3C 2F 68 31 3E 0D 0A    1940      DC.B '</h1>',$0D,$0A
+00003A48= 3C 70 3E 6C 79 6E ...   1941      DC.B '<p>lynx http://somewebpage.com</p>',$0D,$0A
+00003A6C= 3C 2F 62 6F 64 79 ...   1942      DC.B '</body>',$0D,$0A
+00003A75= 3C 2F 68 74 6D 6C ...   1943      DC.B '</html>',$0D,$0A
+00003A7E= 0D 0A 00                1944      DC.B            $0D,$0A,0
+00003A81                          1945      
+00003A81                          1946  GAME_LEVEL_24_KEY:
+00003A81= 31 61 00                1947      DC.B    '1a',0 
+00003A84                          1948      
+00003A84                          1949  GAME_LEVEL_25_MSG:
+00003A84= 0D 0A                   1950      DC.B    $0D,$0A
+00003A86= 63 65 72 62 65 72 ...   1951      DC.B 'cerber@ubuntuserver:~/Downloads$ ',0
+00003AA8= FF                      1952      DC.B    $ff ; garbage
+00003AA9                          1953      
+00003AA9                          1954      
+00003AA9                          1955  GAME_LEVEL_25_KEY:
+00003AA9= 6C 79 6E 78 20 68 ...   1956      DC.B    'lynx http://somewebpage.com',0
+00003AC5                          1957      
+00003AC5                          1958      
+00003AC5                          1959  
+00003AC5                          1960      
+00003AC5                          1961  
+00003AC5                          1962      
+00003AC5                          1963  ;DC.B    $0D,$0A
+00003AC5                          1964  ;    DC.B 'WILL YOU EVER DOWNLOAD THE FILE ''asmproject.X68'' AGAIN?',$0D,$0A
+00003AC5                          1965  ;    DC.B '1. YES    2.NO',$0D,$0A
+00003AC5                          1966  ;    DC.B 'Choose (1/2):',0
+00003AC5                          1967      
+00003AC5                          1968  
+00003AC5                          1969      
+00003AC6= 0005                    1970  BALANCE    DC.W    5
+00003AC8                          1971  
+00003AC8                          1972  
+00003AC8= 0000                    1973  PASSWORD_INPUT_MSG DC.W 0
+00003ACA                          1974  
+00003ACA                          1975  PASSWORD_KEY:
+00003ACA= 000004D2                1976      DC.L    1234
+00003ACE                          1977      
+00003ACE                          1978  NO_BEGINNING_MSG:
+00003ACE= 0D 0A                   1979      DC.B    $0D,$0A   
+00003AD0= 48 49 4E 54 3A 20 ...   1980      DC.B    'HINT: PRESS ''Y''',$0D,$0A 
+00003AE1= 0D 0A                   1981      DC.B    $0D,$0A 
+00003AE3= 41 54 54 45 4D 50 ...   1982      DC.B    'ATTEMPTS: ',0
+00003AEE= 0D 0A 00                1983      DC.B    $0D,$0A,0 
+00003AF1                          1984      
+00003AF1                          1985  NO_PRESS_ENTER_MSG:
+00003AF1= 0D 0A                   1986      DC.B    $0D,$0A   
+00003AF3= 48 49 4E 54 3A 20 ...   1987      DC.B    'HINT: PRESS ENTER',$0D,$0A 
+00003B06= 0D 0A                   1988      DC.B    $0D,$0A 
+00003B08= 41 54 54 45 4D 50 ...   1989      DC.B    'ATTEMPTS: ',0
+00003B13= 0D 0A 00                1990      DC.B    $0D,$0A,0
+00003B16                          1991      
+00003B16                          1992  NO_GAME_LEVEL_1_MSG:
+00003B16= 0D 0A                   1993      DC.B    $0D,$0A   
+00003B18= 48 49 4E 54 3A 20 ...   1994      DC.B    'HINT: display the current directory',$0D,$0A 
+00003B3D= 0D 0A                   1995      DC.B    $0D,$0A 
+00003B3F= 41 54 54 45 4D 50 ...   1996      DC.B    'ATTEMPTS: ',0
+00003B4A= 0D 0A 00                1997      DC.B    $0D,$0A,0
+00003B4D                          1998      
+00003B4D                          1999  NO_GAME_LEVEL_2_MSG:
+00003B4D= 0D 0A                   2000      DC.B    $0D,$0A   
+00003B4F= 48 49 4E 54 3A 20 ...   2001      DC.B    'HINT: LIST files or directories',$0D,$0A 
+00003B70= 0D 0A                   2002      DC.B    $0D,$0A 
+00003B72= 41 54 54 45 4D 50 ...   2003      DC.B    'ATTEMPTS: ',0
+00003B7D= 0D 0A 00                2004      DC.B    $0D,$0A,0
+00003B80                          2005      
+00003B80                          2006  NO_GAME_LEVEL_3_MSG:
+00003B80= 0D 0A                   2007      DC.B    $0D,$0A   
+00003B82= 48 49 4E 54 3A 20 ...   2008      DC.B    'HINT: REMEMBER you have downloaded something',$0D,$0A 
+00003BB0= 0D 0A                   2009      DC.B    $0D,$0A 
+00003BB2= 41 54 54 45 4D 50 ...   2010      DC.B    'ATTEMPTS: ',0
+00003BBD= 0D 0A 00                2011      DC.B    $0D,$0A,0
+00003BC0                          2012      
+00003BC0                          2013  NO_GAME_LEVEL_4_MSG:
+00003BC0= 0D 0A                   2014      DC.B    $0D,$0A   
+00003BC2= 48 49 4E 54 3A 20 ...   2015      DC.B    'HINT: you HAVE to list it again',$0D,$0A 
+00003BE3= 0D 0A                   2016      DC.B    $0D,$0A 
+00003BE5= 41 54 54 45 4D 50 ...   2017      DC.B    'ATTEMPTS: ',0
+00003BF0= 0D 0A 00                2018      DC.B    $0D,$0A,0
+00003BF3                          2019      
+00003BF3                          2020  NO_CHOICE_2_MSG:
+00003BF3= 0D 0A                   2021      DC.B    $0D,$0A   
+00003BF5= 48 49 4E 54 3A 20 ...   2022      DC.B    'HINT: you DEFINITELY have NOT learnt the lesson',$0D,$0A 
+00003C26= 0D 0A                   2023      DC.B    $0D,$0A 
+00003C28= 41 54 54 45 4D 50 ...   2024      DC.B    'ATTEMPTS: ',0
+00003C33= 0D 0A 00                2025      DC.B    $0D,$0A,0
+00003C36                          2026      
+00003C36                          2027      
+00003C36                          2028  NO_GAME_LEVEL_5_MSG:
+00003C36= 0D 0A                   2029      DC.B    $0D,$0A   
+00003C38= 48 49 4E 54 3A 20 ...   2030      DC.B    'HINT: you NEED to read a file',$0D,$0A 
+00003C57= 0D 0A                   2031      DC.B    $0D,$0A 
+00003C59= 41 54 54 45 4D 50 ...   2032      DC.B    'ATTEMPTS: ',0
+00003C64= 0D 0A 00                2033      DC.B    $0D,$0A,0
+00003C67                          2034      
+00003C67                          2035      
+00003C67                          2036  NO_GAME_LEVEL_6_MSG:
+00003C67= 0D 0A                   2037      DC.B    $0D,$0A   
+00003C69= 48 49 4E 54 3A 20 ...   2038      DC.B    'HINT: you have NOT learnt the lesson',$0D,$0A 
+00003C8F= 0D 0A                   2039      DC.B    $0D,$0A 
+00003C91= 41 54 54 45 4D 50 ...   2040      DC.B    'ATTEMPTS: ',0
+00003C9C= 0D 0A 00                2041      DC.B    $0D,$0A,0
+00003C9F                          2042      
+00003C9F                          2043  NO_GAME_LEVEL_7_MSG:
+00003C9F= 0D 0A                   2044      DC.B    $0D,$0A   
+00003CA1= 48 49 4E 54 3A 20 ...   2045      DC.B    'HINT: delete iamthekey.txt',$0D,$0A 
+00003CBD= 0D 0A                   2046      DC.B    $0D,$0A 
+00003CBF= 41 54 54 45 4D 50 ...   2047      DC.B    'ATTEMPTS: ',0
+00003CCA= 0D 0A 00                2048      DC.B    $0D,$0A,0
+00003CCD                          2049      
+00003CCD                          2050  NO_GAME_LEVEL_8_MSG:
+00003CCD= 0D 0A                   2051      DC.B    $0D,$0A   
+00003CCF= 48 49 4E 54 3A 20 ...   2052      DC.B    'HINT: LIST the directory contents',$0D,$0A 
+00003CF2= 0D 0A                   2053      DC.B    $0D,$0A 
+00003CF4= 41 54 54 45 4D 50 ...   2054      DC.B    'ATTEMPTS: ',0
+00003CFF= 0D 0A 00                2055      DC.B    $0D,$0A,0
+00003D02                          2056      
+00003D02                          2057  NO_GAME_LEVEL_9_MSG:
+00003D02= 0D 0A                   2058      DC.B    $0D,$0A   
+00003D04= 48 49 4E 54 3A 20 ...   2059      DC.B    'HINT: READ rocket-history.txt',$0D,$0A 
+00003D23= 0D 0A                   2060      DC.B    $0D,$0A 
+00003D25= 41 54 54 45 4D 50 ...   2061      DC.B    'ATTEMPTS: ',0
+00003D30= 0D 0A 00                2062      DC.B    $0D,$0A,0
+00003D33                          2063      
+00003D33                          2064  NO_GAME_LEVEL_10_MSG:
+00003D33= 0D 0A                   2065      DC.B    $0D,$0A   
+00003D35= 48 49 4E 54 3A 20 ...   2066      DC.B    'HINT: use the command ''CLEAR''',$0D,$0A 
+00003D54= 0D 0A                   2067      DC.B    $0D,$0A 
+00003D56= 41 54 54 45 4D 50 ...   2068      DC.B    'ATTEMPTS: ',0
+00003D61= 0D 0A 00                2069      DC.B    $0D,$0A,0
+00003D64                          2070      
+00003D64                          2071  NO_GAME_LEVEL_11_MSG:
+00003D64= 0D 0A                   2072      DC.B    $0D,$0A   
+00003D66= 48 49 4E 54 3A 20 ...   2073      DC.B    'HINT: DELETE the previous file that you have opened',$0D,$0A 
+00003D9B= 0D 0A                   2074      DC.B    $0D,$0A 
+00003D9D= 41 54 54 45 4D 50 ...   2075      DC.B    'ATTEMPTS: ',0
+00003DA8= 0D 0A 00                2076      DC.B    $0D,$0A,0
+00003DAB                          2077      
+00003DAB                          2078  NO_GAME_LEVEL_12_MSG:
+00003DAB= 0D 0A                   2079      DC.B    $0D,$0A   
+00003DAD= 48 49 4E 54 3A 20 ...   2080      DC.B    'HINT: LIST the contents please',$0D,$0A 
+00003DCD= 0D 0A                   2081      DC.B    $0D,$0A 
+00003DCF= 41 54 54 45 4D 50 ...   2082      DC.B    'ATTEMPTS: ',0
+00003DDA= 0D 0A 00                2083      DC.B    $0D,$0A,0
+00003DDD                          2084      
+00003DDD                          2085  NO_GAME_LEVEL_13_MSG:
+00003DDD= 0D 0A                   2086      DC.B    $0D,$0A   
+00003DDF= 48 49 4E 54 3A 20 ...   2087      DC.B    'HINT: OPEN examples.txt',$0D,$0A 
+00003DF8= 0D 0A                   2088      DC.B    $0D,$0A 
+00003DFA= 41 54 54 45 4D 50 ...   2089      DC.B    'ATTEMPTS: ',0
+00003E05= 0D 0A 00                2090      DC.B    $0D,$0A,0
+00003E08                          2091      
+00003E08                          2092  NO_GAME_LEVEL_14_MSG:
+00003E08= 0D 0A                   2093      DC.B    $0D,$0A   
+00003E0A= 48 49 4E 54 3A 20 ...   2094      DC.B    'HINT: DELETE the previous file',$0D,$0A 
+00003E2A= 0D 0A                   2095      DC.B    $0D,$0A 
+00003E2C= 41 54 54 45 4D 50 ...   2096      DC.B    'ATTEMPTS: ',0
+00003E37= 0D 0A 00                2097      DC.B    $0D,$0A,0
+00003E3A                          2098      
+00003E3A                          2099  NO_GAME_LEVEL_15_MSG:
+00003E3A= 0D 0A                   2100      DC.B    $0D,$0A   
+00003E3C= 48 49 4E 54 3A 20 ...   2101      DC.B    'HINT: LIST files yes obviously...',$0D,$0A 
+00003E5F= 0D 0A                   2102      DC.B    $0D,$0A 
+00003E61= 41 54 54 45 4D 50 ...   2103      DC.B    'ATTEMPTS: ',0
+00003E6C= 0D 0A 00                2104      DC.B    $0D,$0A,0
+00003E6F                          2105      
+00003E6F                          2106  NO_GAME_LEVEL_16_MSG:
+00003E6F= 0D 0A                   2107      DC.B    $0D,$0A   
+00003E71= 48 49 4E 54 3A 20 ...   2108      DC.B    'HINT: ./burpsulte_free_linux_v1_7_15.sh',$0D,$0A 
+00003E9A= 0D 0A                   2109      DC.B    $0D,$0A 
+00003E9C= 41 54 54 45 4D 50 ...   2110      DC.B    'ATTEMPTS: ',0
+00003EA7= 0D 0A 00                2111      DC.B    $0D,$0A,0
+00003EAA                          2112      
+00003EAA                          2113      
+00003EAA                          2114  NO_GAME_LEVEL_17_MSG:
+00003EAA= 0D 0A                   2115      DC.B    $0D,$0A   
+00003EAC= 48 49 4E 54 3A 20 ...   2116      DC.B    'HINT: DELETE burpsulte_free_linux_v1_7_15.sh',$0D,$0A 
+00003EDA= 0D 0A                   2117      DC.B    $0D,$0A 
+00003EDC= 41 54 54 45 4D 50 ...   2118      DC.B    'ATTEMPTS: ',0
+00003EE7= 0D 0A 00                2119      DC.B    $0D,$0A,0
+00003EEA                          2120      
+00003EEA                          2121      
+00003EEA                          2122  NO_GAME_LEVEL_18_MSG:
+00003EEA= 0D 0A                   2123      DC.B    $0D,$0A   
+00003EEC= 48 49 4E 54 3A 20 ...   2124      DC.B    'HINT: exactly, LIST the contents',$0D,$0A 
+00003F0E= 0D 0A                   2125      DC.B    $0D,$0A 
+00003F10= 41 54 54 45 4D 50 ...   2126      DC.B    'ATTEMPTS: ',0
+00003F1B= 0D 0A 00                2127      DC.B    $0D,$0A,0
+00003F1E                          2128      
+00003F1E                          2129  NO_GAME_LEVEL_19_MSG:
+00003F1E= 0D 0A                   2130      DC.B    $0D,$0A   
+00003F20= 48 49 4E 54 3A 20 ...   2131      DC.B    'HINT: cat READTHIS.txt',$0D,$0A 
+00003F38= 0D 0A                   2132      DC.B    $0D,$0A 
+00003F3A= 41 54 54 45 4D 50 ...   2133      DC.B    'ATTEMPTS: ',0
+00003F45= 0D 0A 00                2134      DC.B    $0D,$0A,0
+00003F48                          2135      
+00003F48                          2136  NO_GAME_LEVEL_20_MSG:
+00003F48= 0D 0A                   2137      DC.B    $0D,$0A   
+00003F4A= 48 49 4E 54 3A 20 ...   2138      DC.B    'HINT: DELETE READTHIS.txt',$0D,$0A 
+00003F65= 0D 0A                   2139      DC.B    $0D,$0A 
+00003F67= 41 54 54 45 4D 50 ...   2140      DC.B    'ATTEMPTS: ',0
+00003F72= 0D 0A 00                2141      DC.B    $0D,$0A,0
+00003F75                          2142      
+00003F75                          2143  NO_GAME_LEVEL_21_MSG:
+00003F75= 0D 0A                   2144      DC.B    $0D,$0A   
+00003F77= 48 49 4E 54 3A 20 ...   2145      DC.B    'HINT: LIST directory contents ',$0D,$0A 
+00003F97= 0D 0A                   2146      DC.B    $0D,$0A 
+00003F99= 41 54 54 45 4D 50 ...   2147      DC.B    'ATTEMPTS: ',0
+00003FA4= 0D 0A 00                2148      DC.B    $0D,$0A,0
+00003FA7                          2149      
+00003FA7                          2150      
+00003FA7                          2151  NO_GAME_LEVEL_22_MSG:
+00003FA7= 0D 0A                   2152      DC.B    $0D,$0A   
+00003FA9= 48 49 4E 54 3A 20 ...   2153      DC.B    'HINT: OPEN dontdeleteme.txt',$0D,$0A 
+00003FC6= 0D 0A                   2154      DC.B    $0D,$0A 
+00003FC8= 41 54 54 45 4D 50 ...   2155      DC.B    'ATTEMPTS: ',0
+00003FD3= 0D 0A 00                2156      DC.B    $0D,$0A,0
+00003FD6                          2157      
+00003FD6                          2158      
+00003FD6                          2159  NO_GAME_LEVEL_23_MSG:
+00003FD6= 0D 0A                   2160      DC.B    $0D,$0A   
+00003FD8= 48 49 4E 54 3A 20 ...   2161      DC.B    'HINT: curl http://asmproject.com',$0D,$0A 
+00003FFA= 0D 0A                   2162      DC.B    $0D,$0A 
+00003FFC= 41 54 54 45 4D 50 ...   2163      DC.B    'ATTEMPTS: ',0
+00004007= 0D 0A 00                2164      DC.B    $0D,$0A,0
+0000400A                          2165      
+0000400A                          2166  NO_GAME_LEVEL_24_MSG:
+0000400A= 0D 0A                   2167      DC.B    $0D,$0A   
+0000400C= 48 49 4E 54 3A 20 ...   2168      DC.B    'HINT: PRIVATE KEY:1a',$0D,$0A 
+00004022= 0D 0A                   2169      DC.B    $0D,$0A 
+00004024= 41 54 54 45 4D 50 ...   2170      DC.B    'ATTEMPTS: ',0
+0000402F= 0D 0A 00                2171      DC.B    $0D,$0A,0
+00004032                          2172      
+00004032                          2173  NO_GAME_LEVEL_25_MSG:
+00004032= 0D 0A                   2174      DC.B    $0D,$0A   
+00004034= 48 49 4E 54 3A 20 ...   2175      DC.B    'HINT: lynx http://somewebpage.com',$0D,$0A 
+00004057= 0D 0A                   2176      DC.B    $0D,$0A 
+00004059= 41 54 54 45 4D 50 ...   2177      DC.B    'ATTEMPTS: ',0
+00004064= 0D 0A 00                2178      DC.B    $0D,$0A,0
+00004067                          2179  
+00004067                          2180      
+00004068= 0000                    2181  BEGINNING_INPUT_MSG DC.W 0
+0000406A                          2182  
+0000406A                          2183  
+0000406A                          2184  
+0000406A= 2000 0000               2185  GAME_LEVEL_1_INPUT_MSG DC.W ' ',0
+0000406E                          2186  
+0000406E= 2000 0000               2187  GAME_LEVEL_2_INPUT_MSG DC.W ' ',0
+00004072                          2188  
+00004072= 2000 0000               2189  GAME_LEVEL_3_INPUT_MSG DC.W ' ',0
+00004076                          2190  
+00004076= 2000 0000               2191  GAME_LEVEL_4_INPUT_MSG DC.W ' ',0
+0000407A                          2192  
+0000407A= 2000 0000               2193  GAME_LEVEL_5_INPUT_MSG DC.W ' ',0
+0000407E                          2194  
+0000407E= 2000 0000               2195  GAME_LEVEL_6_INPUT_MSG DC.W ' ',0
+00004082                          2196  
+00004082= 2000 0000               2197  GAME_LEVEL_7_INPUT_MSG DC.W ' ',0
+00004086                          2198  
+00004086= 2000 0000               2199  GAME_LEVEL_8_INPUT_MSG DC.W ' ',0
+0000408A                          2200  
+0000408A= 2000 0000               2201  GAME_LEVEL_9_INPUT_MSG DC.W ' ',0
+0000408E                          2202  
+0000408E= 2000 0000               2203  GAME_LEVEL_10_INPUT_MSG DC.W ' ',0
+00004092                          2204  
+00004092= 2000 0000               2205  GAME_LEVEL_11_INPUT_MSG DC.W ' ',0
+00004096                          2206  
+00004096= 2000 0000               2207  GAME_LEVEL_12_INPUT_MSG DC.W ' ',0
+0000409A                          2208  
+0000409A= 2000 0000               2209  GAME_LEVEL_13_INPUT_MSG DC.W ' ',0
+0000409E                          2210  
+0000409E= 2000 0000               2211  GAME_LEVEL_14_INPUT_MSG DC.W ' ',0
+000040A2                          2212  
+000040A2= 2000 0000               2213  GAME_LEVEL_15_INPUT_MSG DC.W ' ',0
+000040A6                          2214  
+000040A6= 2000 0000               2215  GAME_LEVEL_16_INPUT_MSG DC.W ' ',0
+000040AA                          2216  
+000040AA= 2000 0000               2217  GAME_LEVEL_17_INPUT_MSG DC.W ' ',0
+000040AE                          2218  
+000040AE= 2000 0000               2219  GAME_LEVEL_18_INPUT_MSG DC.W ' ',0
+000040B2                          2220  
+000040B2= 2000 0000               2221  GAME_LEVEL_19_INPUT_MSG DC.W ' ',0
+000040B6                          2222  
+000040B6= 2000 0000               2223  GAME_LEVEL_20_INPUT_MSG DC.W ' ',0
+000040BA                          2224  
+000040BA= 2000 0000               2225  GAME_LEVEL_21_INPUT_MSG DC.W ' ',0
+000040BE                          2226  
+000040BE= 2000 0000               2227  GAME_LEVEL_22_INPUT_MSG DC.W ' ',0
+000040C2                          2228  
+000040C2= 2000 0000               2229  GAME_LEVEL_23_INPUT_MSG DC.W ' ',0
+000040C6                          2230  
+000040C6= 2000 0000               2231  GAME_LEVEL_24_INPUT_MSG DC.W ' ',0
+000040CA                          2232  
+000040CA= 2000 0000               2233  GAME_LEVEL_25_INPUT_MSG DC.W ' ',0
+000040CE                          2234  
+000040CE= 2000 0000               2235  USER_INPUT_MSG DC.W ' ',0
+000040D2                          2236  
+000040D2                          2237  
+000040D2                          2238  
+000040D2                          2239  
+000040D2                          2240      
+000040D2  FFFF FFFF               2241      SIMHALT             ; halt simulator
+000040D6                          2242  
+000040D6                          2243  * Put variables and constants here
+000040D6                          2244  
+000040D6                          2245      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ATTEMPTS            2558
+BALANCE             3AC6
+BEGINNING_INPUT_MSG  4068
+BEGINNING_MSG       25AB
+BEGINNING_PART      1264
+BEGINNING_PART:NO_BEGINNING  1288
+CHOICE_1            1364
+CHOICE_1_MSG        2736
+CHOICE_2            15BA
+CHOICE_2:NO_CHOICE_2  15D2
+CLEAR_SCREEN        118C
+COMPARISON_PART     1250
+END                 1CF0
+FINAL               13BE
+GAME_LEVEL_1        13CE
+GAME_LEVEL_10       171C
+GAME_LEVEL_10:NO_GAME_LEVEL_10  174C
+GAME_LEVEL_10_INPUT_MSG  408E
+GAME_LEVEL_10_KEY   31FC
+GAME_LEVEL_10_MSG   31B2
+GAME_LEVEL_10_OUTPUT  176E
+GAME_LEVEL_10_OUTPUT_MSG  31D7
+GAME_LEVEL_11       1774
+GAME_LEVEL_11:NO_GAME_LEVEL_11  17A4
+GAME_LEVEL_11_INPUT_MSG  4092
+GAME_LEVEL_11_KEY   3227
+GAME_LEVEL_11_MSG   3202
+GAME_LEVEL_12       17C6
+GAME_LEVEL_12:NO_GAME_LEVEL_12  17F6
+GAME_LEVEL_12_INPUT_MSG  4096
+GAME_LEVEL_12_KEY   3300
+GAME_LEVEL_12_MSG   323D
+GAME_LEVEL_12_OUTPUT  1818
+GAME_LEVEL_12_OUTPUT_MSG  3262
+GAME_LEVEL_13       1826
+GAME_LEVEL_13:NO_GAME_LEVEL_13  1856
+GAME_LEVEL_13_INPUT_MSG  409A
+GAME_LEVEL_13_KEY   33B3
+GAME_LEVEL_13_MSG   3303
+GAME_LEVEL_13_OUTPUT  1878
+GAME_LEVEL_13_OUTPUT_MSG  3328
+GAME_LEVEL_14       188E
+GAME_LEVEL_14:NO_GAME_LEVEL_14  18BE
+GAME_LEVEL_14_INPUT_MSG  409E
+GAME_LEVEL_14_KEY   33E9
+GAME_LEVEL_14_MSG   33C4
+GAME_LEVEL_15       18E0
+GAME_LEVEL_15:NO_GAME_LEVEL_15  1910
+GAME_LEVEL_15_INPUT_MSG  40A2
+GAME_LEVEL_15_KEY   34BD
+GAME_LEVEL_15_MSG   33F9
+GAME_LEVEL_15_OUTPUT  1932
+GAME_LEVEL_15_OUTPUT_MSG  341E
+GAME_LEVEL_16       1940
+GAME_LEVEL_16:NO_GAME_LEVEL_16  1970
+GAME_LEVEL_16_INPUT_MSG  40A6
+GAME_LEVEL_16_KEY   35C7
+GAME_LEVEL_16_MSG   34C0
+GAME_LEVEL_16_OUTPUT  1992
+GAME_LEVEL_16_OUTPUT_MSG  34E5
+GAME_LEVEL_17       19A8
+GAME_LEVEL_17:NO_GAME_LEVEL_17  19D8
+GAME_LEVEL_17_INPUT_MSG  40AA
+GAME_LEVEL_17_KEY   360E
+GAME_LEVEL_17_MSG   35E9
+GAME_LEVEL_18       19FA
+GAME_LEVEL_18:NO_GAME_LEVEL_18  1A2A
+GAME_LEVEL_18_INPUT_MSG  40AE
+GAME_LEVEL_18_KEY   36F5
+GAME_LEVEL_18_MSG   3631
+GAME_LEVEL_18_OUTPUT  1A4C
+GAME_LEVEL_18_OUTPUT_MSG  3656
+GAME_LEVEL_19       1A5A
+GAME_LEVEL_19:NO_GAME_LEVEL_19  1A8A
+GAME_LEVEL_19_INPUT_MSG  40B2
+GAME_LEVEL_19_KEY   37F4
+GAME_LEVEL_19_MSG   36F8
+GAME_LEVEL_19_OUTPUT  1AAC
+GAME_LEVEL_19_OUTPUT_MSG  371D
+GAME_LEVEL_1:NO_GAME_LEVEL_1  13FE
+GAME_LEVEL_1_INPUT_MSG  406A
+GAME_LEVEL_1_KEY    2E04
+GAME_LEVEL_1_MSG    2DDA
+GAME_LEVEL_1_OUTPUT  142E
+GAME_LEVEL_1_OUTPUT_MSG  2DF3
+GAME_LEVEL_2        143C
+GAME_LEVEL_20       1AC2
+GAME_LEVEL_20:NO_GAME_LEVEL_20  1AF2
+GAME_LEVEL_20_INPUT_MSG  40B6
+GAME_LEVEL_20_KEY   382A
+GAME_LEVEL_20_MSG   3805
+GAME_LEVEL_21       1B14
+GAME_LEVEL_21:NO_GAME_LEVEL_21  1B44
+GAME_LEVEL_21_INPUT_MSG  40BA
+GAME_LEVEL_21_KEY   38FE
+GAME_LEVEL_21_MSG   383A
+GAME_LEVEL_21_OUTPUT  1B66
+GAME_LEVEL_21_OUTPUT_MSG  385F
+GAME_LEVEL_22       1B74
+GAME_LEVEL_22:NO_GAME_LEVEL_22  1BA4
+GAME_LEVEL_22_INPUT_MSG  40BE
+GAME_LEVEL_22_KEY   3986
+GAME_LEVEL_22_MSG   3901
+GAME_LEVEL_22_OUTPUT  1BC6
+GAME_LEVEL_22_OUTPUT_MSG  3926
+GAME_LEVEL_23       1BDC
+GAME_LEVEL_23:NO_GAME_LEVEL_23  1C0C
+GAME_LEVEL_23_INPUT_MSG  40C2
+GAME_LEVEL_23_KEY   3A24
+GAME_LEVEL_23_MSG   399B
+GAME_LEVEL_23_OUTPUT  1C2E
+GAME_LEVEL_23_OUTPUT_MSG  39C0
+GAME_LEVEL_24       1C3C
+GAME_LEVEL_24:NO_GAME_LEVEL_24  1C66
+GAME_LEVEL_24_INPUT_MSG  40C6
+GAME_LEVEL_24_KEY   3A81
+GAME_LEVEL_24_MSG   3A3F
+GAME_LEVEL_25       1C88
+GAME_LEVEL_25:NO_GAME_LEVEL_25  1CBA
+GAME_LEVEL_25_INPUT_MSG  40CA
+GAME_LEVEL_25_KEY   3AA9
+GAME_LEVEL_25_MSG   3A84
+GAME_LEVEL_2:NO_GAME_LEVEL_2  146C
+GAME_LEVEL_2_INPUT_MSG  406E
+GAME_LEVEL_2_KEY    2D53
+GAME_LEVEL_2_MSG    2D37
+GAME_LEVEL_2_OUTPUT  148C
+GAME_LEVEL_2_OUTPUT_MSG  2D56
+GAME_LEVEL_3        149A
+GAME_LEVEL_3:NO_GAME_LEVEL_3  14CA
+GAME_LEVEL_3_INPUT_MSG  4072
+GAME_LEVEL_3_KEY    2E26
+GAME_LEVEL_3_MSG    2E08
+GAME_LEVEL_3_OUTPUT  14EC
+GAME_LEVEL_3_OUTPUT_MSG  2E23
+GAME_LEVEL_4        14FA
+GAME_LEVEL_4:NO_GAME_LEVEL_4  152A
+GAME_LEVEL_4_INPUT_MSG  4076
+GAME_LEVEL_4_KEY    2EF8
+GAME_LEVEL_4_MSG    2E33
+GAME_LEVEL_4_OUTPUT  154C
+GAME_LEVEL_4_OUTPUT_MSG  2E58
+GAME_LEVEL_5        155A
+GAME_LEVEL_5:NO_GAME_LEVEL_5  158A
+GAME_LEVEL_5_INPUT_MSG  407A
+GAME_LEVEL_5_KEY    2F79
+GAME_LEVEL_5_MSG    2EFB
+GAME_LEVEL_5_OUTPUT  15AC
+GAME_LEVEL_5_OUTPUT_MSG  2F20
+GAME_LEVEL_6        15F4
+GAME_LEVEL_6_INPUT_MSG  407E
+GAME_LEVEL_6_MSG    2F8B
+GAME_LEVEL_7        1602
+GAME_LEVEL_7:NO_GAME_LEVEL_7  1632
+GAME_LEVEL_7_INPUT_MSG  4082
+GAME_LEVEL_7_KEY    3002
+GAME_LEVEL_7_MSG    2FDD
+GAME_LEVEL_8        1654
+GAME_LEVEL_8:NO_GAME_LEVEL_8  1684
+GAME_LEVEL_8_INPUT_MSG  4086
+GAME_LEVEL_8_KEY    30D5
+GAME_LEVEL_8_MSG    3013
+GAME_LEVEL_8_OUTPUT  16A6
+GAME_LEVEL_8_OUTPUT_MSG  3038
+GAME_LEVEL_9        16B4
+GAME_LEVEL_9:NO_GAME_LEVEL_9  16E4
+GAME_LEVEL_9_INPUT_MSG  408A
+GAME_LEVEL_9_KEY    319B
+GAME_LEVEL_9_MSG    30D8
+GAME_LEVEL_9_OUTPUT  1706
+GAME_LEVEL_9_OUTPUT_MSG  30FD
+GAME_LOOP           1010
+GAME_OVER           1CDC
+GAME_OVER_MSG       27BE
+GAME_STATS          1232
+GAME_STATS_MSG      259B
+NEXT_LINE           1420
+NEXT_LINE_MSG       2D50
+NO_BEGINNING_MSG    3ACE
+NO_CHOICE_1         1380
+NO_CHOICE_1_MSG     2777
+NO_CHOICE_1_MSG_CONT  27B1
+NO_CHOICE_2_MSG     3BF3
+NO_GAME_LEVEL_10_MSG  3D33
+NO_GAME_LEVEL_11_MSG  3D64
+NO_GAME_LEVEL_12_MSG  3DAB
+NO_GAME_LEVEL_13_MSG  3DDD
+NO_GAME_LEVEL_14_MSG  3E08
+NO_GAME_LEVEL_15_MSG  3E3A
+NO_GAME_LEVEL_16_MSG  3E6F
+NO_GAME_LEVEL_17_MSG  3EAA
+NO_GAME_LEVEL_18_MSG  3EEA
+NO_GAME_LEVEL_19_MSG  3F1E
+NO_GAME_LEVEL_1_MSG  3B16
+NO_GAME_LEVEL_20_MSG  3F48
+NO_GAME_LEVEL_21_MSG  3F75
+NO_GAME_LEVEL_22_MSG  3FA7
+NO_GAME_LEVEL_23_MSG  3FD6
+NO_GAME_LEVEL_24_MSG  400A
+NO_GAME_LEVEL_25_MSG  4032
+NO_GAME_LEVEL_2_MSG  3B4D
+NO_GAME_LEVEL_3_MSG  3B80
+NO_GAME_LEVEL_4_MSG  3BC0
+NO_GAME_LEVEL_5_MSG  3C36
+NO_GAME_LEVEL_6_MSG  3C67
+NO_GAME_LEVEL_7_MSG  3C9F
+NO_GAME_LEVEL_8_MSG  3CCD
+NO_GAME_LEVEL_9_MSG  3D02
+NO_PASSWORD_MSG     255A
+NO_PRESS_ENTER_MSG  3AF1
+NO_USER_MSG         2530
+PASSWORD_INPUT_MSG  3AC8
+PASSWORD_KEY        3ACA
+PASSWORD_MSG        258D
+PASSWORD_PART       11EA
+PASSWORD_PART:NO_PASSWORD  1214
+PRESS_ENTER_MSG     2612
+PRESS_ENTER_PART    12C0
+PRESS_ENTER_PART:NO_PRESS_ENTER  12E4
+START               1000
+START_MSG           2500
+START_PART          1168
+START_PART:NO_START  1184
+USER_INPUT_MSG      40CE
+USER_KEY            2550
+USER_MSG            2522
+USER_PART           1196
+USER_PART:NO_USER   11CC
+WARNING_MSG_1       25FE
+WARNING_MSG_2       2623
+WARNING_MSG_3       2644
+WARNING_MSG_4       267A
+WARNING_MSG_5       26AF
+WARNING_MSG_6       26CE
+WARNING_MSG_7       26EB
+WARNING_MSG_8       2707
+WARNING_PART_1      12B2
+WARNING_PART_2      1302
+WARNING_PART_3      1310
+WARNING_PART_4      131E
+WARNING_PART_5      132C
+WARNING_PART_6      133A
+WARNING_PART_7      1348
+WARNING_PART_8      1356
+WELCOME_MSG         1CF4
+WELCOME_PART        12A4

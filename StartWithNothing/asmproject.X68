@@ -6,13 +6,20 @@
 * Description:  asmproject
 *-----------------------------------------------------------
     ORG    $1000
+*-----------------------------------------------------------
+* Section       : Filling Colour 
+* Description   : making the fill colour blue
+*-----------------------------------------------------------
 START:                  ; first instruction of program
 
     LEA     $4000,A3        
     MOVE.L	#$000000FF,D1	Make the fill color blue
 	MOVE.B	#21,D0
 	TRAP	#15
-	
+*-----------------------------------------------------------
+* Section       : Game Loop 
+* Description   : The script, 
+*-----------------------------------------------------------	
 GAME_LOOP:
     BSR     START_PART
     BSR     CLEAR_SCREEN
@@ -1538,7 +1545,7 @@ CHOICE_1_MSG:
     
 NO_CHOICE_1_MSG:
     DC.B    $0D,$0A
-    DC.B    'Amount: 10BTC'
+    DC.B    'Amount($): 80'
     DC.B    $0D,$0A
     DC.B    'IBAN: IE65BOFI900017257357'
     DC.B    $0D,$0A
@@ -1803,7 +1810,7 @@ GAME_LEVEL_16_MSG:
     
 GAME_LEVEL_16_OUTPUT_MSG:
     DC.B    $0D,$0A
-    DC.B 'GUES WHAT???',$0D,$0A
+    DC.B 'GUESS WHAT???',$0D,$0A
     DC.B 'YOUR BALANCE HAS BEEN UPDATED AGAIN!',$0D,$0A
     DC.B 'DELETE THOSE FILES YOU DO NOT NEED THEM',$0D,$0A
     DC.B '1. DELETE this file',$0D,$0A
@@ -2236,6 +2243,7 @@ USER_INPUT_MSG DC.W ' ',0
 * Put variables and constants here
 
     END    START        ; last line of source
+
 
 
 

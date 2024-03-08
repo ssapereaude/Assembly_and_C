@@ -3,12 +3,12 @@
 * Title      :  Option I
 * Written by :  Temur Rustamov
 * Date       :  27/02/2024
-* Description:  Text-based Game
+* Description:  asmproject
 *-----------------------------------------------------------
     ORG    $1000
 START:                  ; first instruction of program
 
-    LEA     $4000,A3        ASSIGN ADDRESS A3 TO THAT MEMORY LOCATION
+    LEA     $4000,A3        
     MOVE.L	#$000000FF,D1	Make the fill color blue
 	MOVE.B	#21,D0
 	TRAP	#15
@@ -356,7 +356,14 @@ NO_CHOICE_1:
     MOVE.B  #5,D0
     TRAP    #15
     
+    CMP.W   #80,BALANCE
+    BEQ     FINAL   
     BSR     GAME_OVER 
+
+FINAL:
+    BSR CLEAR_SCREEN
+    MOVE.W #0,BALANCE
+    BRA GAME_LOOP
 
     
 GAME_LEVEL_1:
@@ -1306,23 +1313,36 @@ GAME_LEVEL_23_OUTPUT:
     
 GAME_LEVEL_24:
 
-    LEA     GAME_LEVEL_24_INPUT_MSG,A1
-    
     MOVE    #2,D0
     TRAP    #15
     
-
-       
+    
     LEA     GAME_LEVEL_24_KEY,A6
     
     MOVE.B  (A1),D0
     CMP.B   (A6),D0
     
-    BNE     .NO_GAME_LEVEL_24
+    ;MOVE.L  (A1),D0
+    ;CMP.L   (A6),D0
     
-    LEA     GAME_LEVEL_24_OUTPUT_MSG,A1
+    BNE .NO_GAME_LEVEL_24
+
+    LEA     GAME_LEVEL_24_MSG,A1
     MOVE    #14,D0
     TRAP    #15
+    
+    ;LEA     GAME_LEVEL_24_INPUT_MSG,A1
+    
+    ;MOVE    #2,D0
+    ;TRAP    #15
+    
+    
+    ;LEA     GAME_LEVEL_24_KEY,A6
+    
+    ;MOVE.B  (A1),D0
+    ;CMP.B   (A6),D0
+    
+    ;BNE     .NO_GAME_LEVEL_24
     MOVE.W  #0,ATTEMPTS
     RTS
     
@@ -1393,10 +1413,7 @@ GAME_OVER:
     LEA     GAME_OVER_MSG,A1
     MOVE    #14,D0
     TRAP    #15
-    BSR END 
-
-GAME_WIN:
-          
+    BSR END       
 
 END:
     SIMHALT  
@@ -1521,7 +1538,7 @@ CHOICE_1_MSG:
     
 NO_CHOICE_1_MSG:
     DC.B    $0D,$0A
-    DC.B    'Amount($): 80'
+    DC.B    'Amount: 10BTC'
     DC.B    $0D,$0A
     DC.B    'IBAN: IE65BOFI900017257357'
     DC.B    $0D,$0A
@@ -1836,7 +1853,7 @@ GAME_LEVEL_19_OUTPUT_MSG:
     DC.B    $0D,$0A
     DC.B '15$ HAS BEEN ADDED TO YOU BALANCE ACCOUNT!',$0D,$0A
     DC.B 'YOU WILL UNDERSTAND WHY YOU NEED THEM VERY SOON!',$0D,$0A
-    DC.B 'PRIVATE KEY:12345ABABA',$0D,$0A
+    DC.B 'PRIVATE KEY:1a',$0D,$0A
     DC.B '1. DELETE READTHIS.txt  ',$0D,$0A
     DC.B '2. OPEN dontdeleteme.txt  ',$0D,$0A
     DC.B 'YESSS YOU WILL GET ANOTHER 15$ YOU GOT THAT ',$0D,$0A
@@ -1906,9 +1923,12 @@ GAME_LEVEL_23_OUTPUT_MSG:
     DC.B 'PRIVATE_KEY: ',0
 
 GAME_LEVEL_23_KEY:
-    DC.B    'curl http://asmproject.com',0    
+    ;DC.B    '12345ABABA',0  
+    DC.B    'curl http://asmproject.com',0   
     
-GAME_LEVEL_24_OUTPUT_MSG:
+
+    
+GAME_LEVEL_24_MSG:
     DC.B    $0D,$0A   
     DC.B '</h1>',$0D,$0A
     DC.B '<p>lynx http://somewebpage.com</p>',$0D,$0A
@@ -1917,7 +1937,7 @@ GAME_LEVEL_24_OUTPUT_MSG:
     DC.B            $0D,$0A,0
     
 GAME_LEVEL_24_KEY:
-    DC.B    '12345ABABA',0 
+    DC.B    '1a',0 
     
 GAME_LEVEL_25_MSG:
     DC.B    $0D,$0A
@@ -2138,7 +2158,7 @@ NO_GAME_LEVEL_23_MSG:
     
 NO_GAME_LEVEL_24_MSG:
     DC.B    $0D,$0A   
-    DC.B    'HINT: PRIVATE KEY:12345ABABA',$0D,$0A 
+    DC.B    'HINT: PRIVATE KEY:1a',$0D,$0A 
     DC.B    $0D,$0A 
     DC.B    'ATTEMPTS: ',0
     DC.B    $0D,$0A,0
@@ -2216,6 +2236,8 @@ USER_INPUT_MSG DC.W ' ',0
 * Put variables and constants here
 
     END    START        ; last line of source
+
+
 
 
 

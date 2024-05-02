@@ -70,9 +70,13 @@ BOSS_X         dc.w 0    ; 16bits boss X position
 
 BOSS_Y         dc.w 0    ; 16bits boss Y position
 
-                         ;                        ; there are direct addressing, indirect addressing, immediate addressing modes, direct addressing - when the operand is part of the instruction, direct addressing is when the operand is a register or memory location and indirect when the operand is specified by a pointer
-* Put variables and constants here
+
 
     END    START        ; last line of source
 
 
+
+*~Font name~Courier New~
+*~Font size~10~
+*~Tab type~1~
+*~Tab size~4~

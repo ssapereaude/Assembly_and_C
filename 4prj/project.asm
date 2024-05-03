@@ -7,17 +7,17 @@ global _start
 section .text
 _start:
     ; Print first prompt
-    mov rdx, prompt_length      ; message length
+    mov edx, prompt_length      ; message length
     mov rsi, prompt             ; message address
-    mov rdi, 0x01               ; file descriptor (stdout)
-    mov rax, 0x01               ; system call number (sys_write)
+    mov edi, 1                  ; file descriptor (stdout)
+    mov eax, 1                  ; system call number (sys_write)
     syscall                     ; perform system call
 
     ; Read input into num1
-    mov rdi, 0x00               ; file descriptor (stdin)
-    mov rax, 0x00               ; system call number (sys_read)
+    mov edi, 0                  ; file descriptor (stdin)
+    mov eax, 0                  ; system call number (sys_read)
     mov rsi, num1               ; buffer to store input
-    mov rdx, 64                 ; number of bytes to read
+    mov edx, 64                 ; number of bytes to read
     syscall                     ; perform system call
 
     ; Convert ASCII to integer (num1)
@@ -28,17 +28,17 @@ _start:
     mov [num1], rax
 
     ; Print second prompt
-    mov rdx, prompt_length      ; message length
+    mov edx, prompt_length      ; message length
     mov rsi, prompt             ; message address
-    mov rdi, 0x01               ; file descriptor (stdout)
-    mov rax, 0x01               ; system call number (sys_write)
+    mov edi, 1                  ; file descriptor (stdout)
+    mov eax, 1                  ; system call number (sys_write)
     syscall                     ; perform system call
 
     ; Read input into num2
-    mov rdi, 0x00               ; file descriptor (stdin)
-    mov rax, 0x00               ; system call number (sys_read)
+    mov edi, 0                  ; file descriptor (stdin)
+    mov eax, 0                  ; system call number (sys_read)
     mov rsi, num2               ; buffer to store input
-    mov rdx, 64                 ; number of bytes to read
+    mov edx, 64                 ; number of bytes to read
     syscall                     ; perform system call
 
     ; Convert ASCII to integer (num2)
@@ -59,15 +59,15 @@ _start:
     call itoa
 
     ; Print the result
-    mov rdx, buffer_length      ; length of the result in ASCII
+    mov rdx, [buffer_len]       ; length of the result in ASCII
     mov rsi, buffer             ; result in ASCII
-    mov rdi, 0x01               ; file descriptor (stdout)
-    mov rax, 0x01               ; system call number (sys_write)
+    mov edi, 1                  ; file descriptor (stdout)
+    mov eax, 1                  ; system call number (sys_write)
     syscall                     ; perform system call
 
     ; Exit the program
-    mov rax, 0x3c               ; system call number (sys_exit)
-    mov rdi, 0x0                ; return status
+    mov eax, 60                 ; system call number (sys_exit)
+    mov edi, 0                  ; return status
     syscall                     ; perform system call
 
 atoi:
@@ -104,19 +104,18 @@ itoa_build:
     cmp rsp, rbx                ; compare stack pointer with original buffer address
     jne itoa_build              ; continue if more characters
     mov byte [rdi], 0           ; null-terminate string
-    mov rax, rdi                ; set return value to string start
-    sub rax, rbx                ; calculate length
-    mov buffer_length, rax      ; store length in buffer_length
+    mov [buffer_len], rdi       ; calculate length
+    sub [buffer_len], rbx       ; adjust length
     ret
 
 ; DATA SECTION
 section .bss
-num1    resb 8                  ; Reserve space for integer (num1)
-num2    resb 8                  ; Reserve space for integer (num2)
-result  resb 8                  ; Reserve space for result
-buffer  resb 65                 ; Buffer for ASCII result
+num1            resb 8                  ; Reserve space for integer (num1)
+num2            resb 8                  ; Reserve space for integer (num2)
+result          resb 8                  ; Reserve space for result
+buffer          resb 21                 ; Buffer for ASCII result, corrected to 21 bytes
+buffer_len      resd 1                  ; Reserve space for buffer length
 
 section .data
 prompt          db 'Enter Number: ', 0
 prompt_length   equ $-prompt
-buffer_length   resd 1           ; Placeholder for result length

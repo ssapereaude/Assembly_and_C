@@ -1,0 +1,32 @@
+Overview
+
+This document details the conversion of an assembly language program into a functional state on a modern 64-bit Linux system. The assembly code is designed to perform basic input/output operations and simple arithmetic (addition).
+
+Original Code Description
+
+The provided assembly program (project.asm) operates by performing the following steps:
+
+Displaying a prompt to the user.
+Reading a numeric input.
+Displaying the same prompt again.
+Reading another numeric input.
+Adding the two numbers.
+Displaying the result.
+Exiting the program.
+Changes Made During Conversion
+
+Register Conventions and Syscall Adjustments
+The original code was partially set up for 32-bit operations, evident in the use of registers like rbx, which are not used for passing parameters in 64-bit Linux syscalls. The conversion process involved:
+
+Updating register usage to comply with the System V AMD64 ABI, which is standard for 64-bit Linux. This includes using rdi, rsi, rdx, r10, r8, and r9 for passing syscall parameters.
+Adjusting syscall numbers to their 64-bit values and ensuring correct usage of the syscall instruction.
+Data Section Initialization
+The .bss and .data sections were adjusted:
+
+Ensuring correct memory reservations for num1, num2, and result using resb to allocate the correct amount of bytes (previously incorrectly noted as bits).
+Correct initialization and use of string prompts, ensuring null termination and correct length calculation.
+Syscall for File Operations
+Syscall usage for file operations (read, write) was updated:
+
+Using 0x01 for write and 0x00 for read with the correct file descriptor (stdout as 1 and stdin as 0).
+Adjustments to properly handle user input and output of results using the standard input and output streams.
